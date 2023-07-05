@@ -10,6 +10,9 @@
     <p>
         @DateTime.Now
     </p>
+    
+    <p>@ViewData["totalGame"]</p>
+    <p>@ViewData["illegalSuccess"]</p>
 
     <form action="/Home/Index" method="post">
         <p>Please enter a number between 0 and 9: </p>
@@ -29,7 +32,6 @@
                 <th>Game Id</th>
                 <th>Guess Number</th>
                 <th>Main Number</th>
-                <th>Success Guess</th>
                 <th>Difference</th>
             </tr>
         </thead>
@@ -39,9 +41,10 @@
                 <th>@games.Id</th>
                 <th>@games.GuessNumber</th>
                 <th>@games.RememberNumber</th>
-                <th>@games.Success</th>
                 <th>@games.Difference</th>
             </tr>
+
+
         }
     </table>
 </div>

@@ -14,6 +14,7 @@ namespace TpaoProject1.Controllers
         private readonly AppDbContext _context;
         private int rnd;
         private int success;
+        private int totalGame;
 
         public HomeController(AppDbContext context)
         {
@@ -33,6 +34,12 @@ namespace TpaoProject1.Controllers
         public IActionResult Index()
         {
             var games = _context.Game.ToList();
+            foreach(var game in games)
+            {
+                totalGame++;
+                ViewData["totalGame"] = "Total Game : " + totalGame;
+                ViewData["illegalSuccess"]= "Total success : " + game.Success;
+            }
             return View(games);
         }
 
@@ -67,7 +74,6 @@ namespace TpaoProject1.Controllers
             var rememberNumber = rnd;
             var difference = Math.Abs(inputNumber - rnd);
             Game game = new Game() { GuessNumber = guessNumber, RememberNumber = rememberNumber, Success = success, Difference = difference };
-
             _context.Add(game);
             _context.SaveChanges();
             return RedirectToAction("Index");
