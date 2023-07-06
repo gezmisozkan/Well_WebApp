@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Betul\\source\\repos\\TpaoProject1\\TpaoProject1\\TpaoProject1.csproj": {}
+    "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\TpaoProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Betul\\source\\repos\\TpaoProject1\\TpaoProject1\\TpaoProject1.csproj": {
+    "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\TpaoProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Betul\\source\\repos\\TpaoProject1\\TpaoProject1\\TpaoProject1.csproj",
+        "projectUniqueName": "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\TpaoProject1.csproj",
         "projectName": "TpaoProject1",
-        "projectPath": "C:\\Users\\Betul\\source\\repos\\TpaoProject1\\TpaoProject1\\TpaoProject1.csproj",
+        "projectPath": "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\TpaoProject1.csproj",
         "packagesPath": "C:\\Users\\Betul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Betul\\source\\repos\\TpaoProject1\\TpaoProject1\\obj\\",
+        "outputPath": "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Betul\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.18, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.18, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.8, )"
@@ -57,6 +65,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.14, )"
             }
           },
           "imports": [
