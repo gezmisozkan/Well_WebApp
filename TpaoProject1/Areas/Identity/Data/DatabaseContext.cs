@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TpaoProject1.Model;
 
 namespace TpaoProject1.Data;
 
@@ -10,6 +11,7 @@ public class DatabaseContext : IdentityDbContext<IdentityUser>
         : base(options)
     {
     }
+    public DbSet<Game> Game { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

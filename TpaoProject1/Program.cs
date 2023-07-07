@@ -1,4 +1,3 @@
-using TpaoProject1.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TpaoProject1.Data;
@@ -16,7 +15,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.ConfigureDbContext(builder.Configuration);
+//builder.Services.ConfigureDbContext(builder.Configuration);
 
 var app = builder.Build();
 
