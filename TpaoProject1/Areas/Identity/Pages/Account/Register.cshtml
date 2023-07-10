@@ -35,43 +35,112 @@
 
         .form-control {
             margin-top: 10px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .content-center {
+            width: 100%;
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 420px;
+            min-width: 320px;
+            margin: auto;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-system {
+            color: #ed1c25 !important;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #ed1c25;
+            border-color: #ed1c25;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #000000;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            background-color: #ced4da;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         }
 
     </style>
 </head>
-<div class="container">
-    <div class="row col-12">
-        <div class="FlexContainer">
-            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <h2>    Registration   </h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                    <label asp-for="Input.Email"></label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+<div class="container-fluid full-height">
+    <div class="row row-height">
+        <div class="col-lg-12">
+                <div class="content-center">
+                    <div class="content-box">
+                        <div class="text-center">
+                            <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
+                                <img src="https://bnastatic.blob.core.windows.net/odemetpaogovtr/img-firmlogo-65707" class="mb-2" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 70px;">
+                            </a>
+                        </div>
+                        <div id="notify">
+                        </div>
+
+                        <div class="border p-4 rounded">
+                        <form asp-route-returnUrl="@Model.ReturnUrl" class="form-signin" data-ajax="true" data-ajax-failure="ajaxError" data-ajax-method="POST" data-ajax-success="loginSuccess" id="registerForm" method="post" novalidate="novalidate" asp-validation-summary="ModelOnly">
+                                <input name="__RequestVerificationToken" type="hidden" value="c2ecvWACkfFuJOBnwcF_ELif5EZ_XCyfGW-DwIQWwNKtkW2y2G47QPTqrHPtYxQ7xsJC0nB8SGasBJm9FPK-WNobQi6g1x5580wva88R36s1">        <h4 style="margin-bottom:20px;">Kayıt ol</h4>
+                                <div class="form-label-group">
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Kullanıcı Adı" required=true autofocus="" asp-for="Input.Email">
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="Şifre" asp-for="Input.Password" autocomplete="current-password" aria-required="true">
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="password" id="againpassword" name="againpassword" class="form-control" placeholder="Şifre Tekrar" asp-for="Input.Password" autocomplete="current-password" aria-required="true">
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme" value="remember-me">
+                                        <label class="custom-control-label" for="rememberme">Beni Hatırla</label>
+                                    </div>
+                                </div>
+                                <button id="login-submit" type="submit" class="btn btn-primary btn-block" type="submit" asp-page="./Login">Kayıt ol</button>
+                            </form>
+                        </div>
+                    <div class="content-center text-center"><a class="text-system" asp-page="./Login">Zaten hesabınız mevcut mu?</a><div class="gaps-2x"></div>
                 </div>
-                <div class="form-floating">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                    <label asp-for="Input.Password"></label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-floating">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                    <label asp-for="Input.ConfirmPassword"></label>
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-                <button id="registerSubmit" style="background-color: #2c6e49; color: #ffffff; margin-top:10px;" type="submit" class="w-100 btn btn-lg">Register</button>
-                <div class="attribute">
-                    <p style="margin-top: 10px">
-                        <a id="return-login" asp-page="./Login">You have a account?</a>
-                    </p>
+
+                    </div>
 
                 </div>
-
-            </form>
         </div>
-
     </div>
 </div>
 
