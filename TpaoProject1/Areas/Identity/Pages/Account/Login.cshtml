@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="border p-4 rounded">
-                            <form action="/sign-in" class="form-signin" data-ajax="true" data-ajax-failure="ajaxError" data-ajax-method="POST" data-ajax-success="loginSuccess" id="form0" method="post" novalidate="novalidate" asp-validation-summary="ModelOnly">
+                        <form action="Login/OnGetAsync" class="form-signin" data-ajax="true" data-ajax-failure="ajaxError" data-ajax-method="POST" data-ajax-success="loginSuccess" id="form0" method="post" novalidate="novalidate" asp-validation-summary="ModelOnly">
                                 <input name="__RequestVerificationToken" type="hidden" value="c2ecvWACkfFuJOBnwcF_ELif5EZ_XCyfGW-DwIQWwNKtkW2y2G47QPTqrHPtYxQ7xsJC0nB8SGasBJm9FPK-WNobQi6g1x5580wva88R36s1">        <h4 style="margin-bottom:20px;">Giriş Yap</h4>
                                 <div class="form-label-group">
                                     <input type="text" id="username" name="username" class="form-control" placeholder="Kullanıcı Adı" required=true autofocus="" asp-for="Input.Email">

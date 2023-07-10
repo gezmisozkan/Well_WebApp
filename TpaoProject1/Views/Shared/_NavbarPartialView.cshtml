@@ -4,6 +4,7 @@
         <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
             <img src="https://www.tpvakif.org.tr/wp-content/uploads/2018/08/tp-vakif-tp-logo-haberler.png" class="mb-1" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 50px;">
         </a>
+        
 @*        <a class="navbar-brand" href="#" style="color: #ffffff">TPAO</a>
 *@        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,21 +13,19 @@
         <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto" >
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="#" style=" color: #ffffff ">Anasayfa</a>
+                    <a class="nav-link mx-2 active" aria-current="page" asp-controller="Home" asp-action="Index" style=" color: #ffffff ">Anasayfa</a>
                 </li>
+               
                 <li class="nav-item">
-                    <a class="nav-link mx-2 " style=" color: #ffffff " href="#">Hakkımızda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="#" style=" color: #ffffff ">Tarihçe</a>
+                    <a class="nav-link mx-2" asp-controller="Home" asp-action="History" style=" color: #ffffff ">Hakkımızda</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style=" color: #ffffff ">
                         Kullanıcı İşlemleri
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Giriş</a></li>
-                        <li><a class="dropdown-item" href="#">Kayıt Ol</a></li>
+                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Giriş</a></li>
+                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Kayıt Ol</a></li>
                     </ul>
                 </li>
             </ul>
