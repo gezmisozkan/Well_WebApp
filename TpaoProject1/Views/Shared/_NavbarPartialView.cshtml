@@ -6,9 +6,16 @@
 
 <nav class="navbar navbar-expand-lg " style="background-color: #bb242b">
     <div class="container-fluid" ">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+    }
         <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
-            <img src="https://www.tpvakif.org.tr/wp-content/uploads/2018/08/tp-vakif-tp-logo-haberler.png" class="mb-1" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 50px;">
+    
+        <img src="https://www.tpvakif.org.tr/wp-content/uploads/2018/08/tp-vakif-tp-logo-haberler.png" class="mb-1" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 50px;">
+    
         </a>
+
 
         @*        <a class="navbar-brand" href="#" style="color: #ffffff">TPAO</a>
         *@        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
