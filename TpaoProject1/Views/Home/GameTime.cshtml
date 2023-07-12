@@ -1,0 +1,51 @@
+﻿@using TpaoProject1.Model;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Game>
+
+<div class="bg-light border-3 p-3 text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p class="text-center">Betül Karaman</p>
+    <p>
+        @DateTime.Now
+    </p>
+
+    <p>@ViewData["totalGame"]</p>
+    <p>@ViewData["illegalSuccess"]</p>
+
+    <form action="/Home/Index" method="post">
+        <p>Please enter a number between 0 and 9: </p>
+        <input name="inputNumber" type="number" asp />
+        <input type="submit" />
+    </form>
+    <div class="container"></div>
+    @*
+    <p>
+    AI choose:
+    @ViewData["RandomNumber"]
+    </p>*@
+    <p>@ViewData["Result"]</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Game Id</th>
+                <th>Guess Number</th>
+                <th>Main Number</th>
+                <th>Difference</th>
+            </tr>
+        </thead>
+        @foreach (var games in Model)
+        {
+            <tr>
+                <th>@games.Id</th>
+                <th>@games.GuessNumber</th>
+                <th>@games.RememberNumber</th>
+                <th>@games.Difference</th>
+            </tr>
+
+
+        }
+    </table>
+
+</div>

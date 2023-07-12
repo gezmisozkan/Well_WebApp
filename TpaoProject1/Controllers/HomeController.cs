@@ -3,20 +3,20 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Pipelines;
+using TpaoProject1.Data;
 using TpaoProject1.Model;
 using TpaoProject1.Models;
-using TpaoProject1.Services;
 
 namespace TpaoProject1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly DatabaseContext _context;
         private int rnd;
         private int success;
         private int totalGame;
 
-        public HomeController(AppDbContext context)
+        public HomeController(DatabaseContext context)
         {
             _context = context;
             Random random = new Random();
@@ -30,22 +30,30 @@ namespace TpaoProject1.Controllers
 
             //}
         }
-
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult History() { 
+            return View();
+        }
+
+
+        public IActionResult GameTime()
+        {
             var games = _context.Game.ToList();
-            foreach(var game in games)
+            foreach (var game in games)
             {
                 totalGame++;
                 ViewData["totalGame"] = "Total Game : " + totalGame;
-                ViewData["illegalSuccess"]= "Total success : " + game.Success;
+                ViewData["illegalSuccess"] = "Total success : " + game.Success;
             }
             return View(games);
         }
 
         [HttpPost]
-        [ActionName("Index")]
-        public IActionResult IndexPost()
+        [ActionName("GameTime")]
+        public IActionResult GameTimePost()
         {
             var games = _context.Game.ToList();
             int inputNumber = Int16.Parse(HttpContext.Request.Form["inputNumber"]);
@@ -76,7 +84,7 @@ namespace TpaoProject1.Controllers
             Game game = new Game() { GuessNumber = guessNumber, RememberNumber = rememberNumber, Success = success, Difference = difference };
             _context.Add(game);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("GameTime");
         }
 
 
