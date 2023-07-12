@@ -102,44 +102,44 @@
 <div class="container-fluid full-height">
     <div class="row row-height">
         <div class="col-lg-12">
-                <div class="content-center">
-                    <div class="content-box">
-                        <div class="text-center">
-                            <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
-                                <img src="https://bnastatic.blob.core.windows.net/odemetpaogovtr/img-firmlogo-65707" class="mb-2" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 70px;">
-                            </a>
-                        </div>
-                        <div id="notify">
-                        </div>
-
-                        <div class="border p-4 rounded">
-                        <form action="Login/OnGetAsync" class="form-signin" data-ajax="true" data-ajax-failure="ajaxError" data-ajax-method="POST" data-ajax-success="loginSuccess" id="form0" method="post" novalidate="novalidate" asp-validation-summary="ModelOnly">
-                                <input name="__RequestVerificationToken" type="hidden" value="c2ecvWACkfFuJOBnwcF_ELif5EZ_XCyfGW-DwIQWwNKtkW2y2G47QPTqrHPtYxQ7xsJC0nB8SGasBJm9FPK-WNobQi6g1x5580wva88R36s1">        <h4 style="margin-bottom:20px;">Giriş Yap</h4>
-                                <div class="form-label-group">
-                                    <input type="text" id="username" name="username" class="form-control" placeholder="Kullanıcı Adı" required=true autofocus="" asp-for="Input.Email">
-                                </div>
-                                <div class="form-label-group">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="Şifre" asp-for="Input.Password" autocomplete="current-password" aria-required="true">
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme" value="remember-me">
-                                        <label class="custom-control-label" for="rememberme">Beni Hatırla</label>
-                                    </div>
-                                    <div><a asp-controller="User" asp-action="ResetPassword" class="text-system">Şifremi Unuttum?</a><div class="gaps-2x"></div></div>
-                                </div>
-                                <button id="login-submit" type="submit" class="btn btn-primary btn-block" type="submit">Giriş</button>
-                            </form>
-                        </div>
+            <div class="content-center">
+                <div class="content-box">
+                    <div class="text-center">
+                        <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
+                            <img src="https://bnastatic.blob.core.windows.net/odemetpaogovtr/img-firmlogo-65707" class="mb-2" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 70px;">
+                        </a>
                     </div>
+                    <div id="notify">
+                    </div>
+
+                    <div class="border p-4 rounded">
+                        <form action="Login/OnGetAsync" class="form-signin" data-ajax="true" data-ajax-failure="ajaxError" data-ajax-method="POST" data-ajax-success="loginSuccess" id="form0" method="post" novalidate="novalidate" asp-validation-summary="ModelOnly">
+                            <input name="__RequestVerificationToken" type="hidden" value="c2ecvWACkfFuJOBnwcF_ELif5EZ_XCyfGW-DwIQWwNKtkW2y2G47QPTqrHPtYxQ7xsJC0nB8SGasBJm9FPK-WNobQi6g1x5580wva88R36s1">        <h4 style="margin-bottom:20px;">Giriş Yap</h4>
+                            <div class="form-label-group">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Kullanıcı Adı" required=true autofocus="" asp-for="Input.Email">
+                            </div>
+                            <div class="form-label-group">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Şifre" asp-for="Input.Password" autocomplete="current-password" aria-required="true">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme" value="remember-me">
+                                    <label class="custom-control-label" for="rememberme">Beni Hatırla</label>
+                                </div>
+                                <div><a asp-controller="User" asp-action="ResetPassword" class="text-system">Şifremi Unuttum?</a><div class="gaps-2x"></div></div>
+                            </div>
+                            <button id="login-submit" type="submit" class="btn btn-primary btn-block" type="submit">Giriş</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="content-center text-center">
                     <a class="text-system" asp-page="./Register">Hesabınız yok mu?</a><div class="gaps-2x"></div>
 
                 </div>
+            </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
