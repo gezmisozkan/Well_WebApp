@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Model;
 
 namespace TpaoProject1.Data;
 
-public class DatabaseContext : IdentityDbContext<IdentityUser>
+public class DatabaseContext : IdentityDbContext<ApplicationUser>
 {
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)

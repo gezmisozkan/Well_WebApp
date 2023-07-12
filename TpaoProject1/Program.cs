@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +9,16 @@ var connectionString = builder.Configuration.GetConnectionString("DatabaseContex
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<DatabaseContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireUppercase = false;
+});
 builder.Services.AddRazorPages();
 
 //builder.Services.ConfigureDbContext(builder.Configuration);

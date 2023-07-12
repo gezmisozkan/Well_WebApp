@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zocAx6XfnbhDZ+GDoqd5tiRYRwLjJBEMq5oxFXpmMEwOtgOtvrQ/rNfrjv2sGpxnyWQ2eCRHXUU06I7L5NQzmg==",
+  "dgSpecHash": "OhCxeTRtZFegcCJhUOa7x9OmD2M/bN8BUPe2OiKqnpcmpIKUDQmdUZV4gmjyXx+hG4vIS3BPxq9E2JSF9qq+3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Betul\\Documents\\GitHub\\Tpao\\TpaoProject1\\TpaoProject1.csproj",
+  "projectFilePath": "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\TpaoProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Betul\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Betul\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
