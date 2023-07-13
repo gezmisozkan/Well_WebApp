@@ -1,5 +1,6 @@
-﻿
+﻿@using TpaoProject1.Model;
 
+@model WellTop;
 
 <section class="background-radial-gradient overflow-hidden">
     <style>
@@ -54,32 +55,43 @@
 
                 <div class="card bg-glass">
                     <div class="card-body px-4 py-5 px-md-5">
-                        <form asp-action="AddWellTops" asp-controller="ViewWelltops" method="post">
+                        <form asp-action="AddWellTop" asp-controller="ViewWelltops" method="post">
 
                             <div class="form-outline mb-4">
-                                <input type="WelltopName" id="kuyuAdiId" class="form-control" required />
-                                <label class="form-label" for="form3Example3">Kuyu Adı</label>
+                                <label asp-for="Name">Kuyu Adı</label>
+                                <input asp-for="Name" class="form-control" name="Name" aria-required="true" placeholder="Kuyu Adı"/>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                                
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="enlemId" class="form-control" required />
-                                        <label class="form-label" for="form3Example1"> Enlem</label>
+                                        <label asp-for="Latitude">Enlem</label>
+                                        <input asp-for="Latitude" class="form-control" name="Latitude" aria-required="true" placeholder="Enlem" />
+                                        <span asp-validation-for="Latitude" class="text-danger"></span>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="boylamId" class="form-control" required />
-                                        <label class="form-label" for="form3Example2"> Boylam</label>
+                                    
+
+                                        <label asp-for="Longitude">Boylam</label>
+                                        <input asp-for="Longitude" class="form-control" name="Longitude" aria-required="true" placeholder="Boylam" />
+                                        <span asp-validation-for="Longitude" class="text-danger"></span>
+
                                     </div>
 
 
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputState" required>Kuyu Tipi</label>
-                                <select id="inputKuyuTipi" class="form-control" required>
+                                
+
+                                    <label for="inputState" required>Kuyu Tipi</label>
+                                    <select asp-for="WellTopType" class="form-control" name="WellTopType" aria-required="true" placeholder="Kuyu Tipi" />
+                                    <span asp-validation-for="WellTopType" class="text-danger"></span>
 
                                     <option value="arama">Arama</option>
                                     <option value="uretim">Üretim</option>

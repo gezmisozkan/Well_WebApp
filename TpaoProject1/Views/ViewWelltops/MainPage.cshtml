@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using TpaoProject1.Model;
+@model List<WellTop>;
+@using Microsoft.AspNetCore.Identity
+@using TpaoProject1.Areas.Identity.Data;
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -186,27 +194,33 @@
                             <th>Kuyu Adı</th>
                             <th>Enlem </th>
                             <th>Boylam</th>
-                            <th>Şehir</th>
+                            <th>Şehir</th> 
                             <th>İşlemler</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Muhsin</td>
-                            <td>Gurel</td>
-                            <td>muhsingurel@gmail.com</td>
-                            <td>RAMAN-56</td>
-                            <td>32.954865</td>
-                            <td>38.958472</td>
-                            <td>Ankara</td>
-                            <td>
-                                <a href="#" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                <a href="#" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a href="#" class="delete" title="Kaydı Sil" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
+                        @foreach (var wells in Model)
+                        {
+                            <tr>
+
+                                <td>@wells.Id</td>
+                                <td>@UserManager.GetUserAsync(User).Result.FirstName</td>
+                                <td>@UserManager.GetUserAsync(User).Result.LastName</td>
+                                <td>@UserManager.GetUserAsync(User).Result.Email</td>
+                                <td>@wells.Name</td>
+                                <td>@wells.Latitude</td>
+                                <td>@wells.Longitude</td>
+                                <td>@wells.City</td>
+
+                                <td>
+                                    <a href="#" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                    <a href="#" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="#" class="delete" title="Kaydı Sil" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        }
+                       
 
                     </tbody>
                 </table>
