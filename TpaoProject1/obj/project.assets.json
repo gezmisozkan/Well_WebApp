@@ -11715,11 +11715,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Büşranur\\Desktop\\Yeni klasör (2)\\TpaoProject1\\TpaoProject1.csproj",
+      "projectUniqueName": "C:\\Users\\Büşranur\\Desktop\\lastt\\Tpao-AddWelltops\\TpaoProject1\\TpaoProject1.csproj",
       "projectName": "TpaoProject1",
-      "projectPath": "C:\\Users\\Büşranur\\Desktop\\Yeni klasör (2)\\TpaoProject1\\TpaoProject1.csproj",
+      "projectPath": "C:\\Users\\Büşranur\\Desktop\\lastt\\Tpao-AddWelltops\\TpaoProject1\\TpaoProject1.csproj",
       "packagesPath": "C:\\Users\\Büşranur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Büşranur\\Desktop\\Yeni klasör (2)\\TpaoProject1\\obj\\",
+      "outputPath": "C:\\Users\\Büşranur\\Desktop\\lastt\\Tpao-AddWelltops\\TpaoProject1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Büşranur\\AppData\\Roaming\\NuGet\\NuGet.Config",
