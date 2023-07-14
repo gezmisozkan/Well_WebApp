@@ -203,7 +203,6 @@
                         @foreach (var wells in Model)
                         {
                             <tr>
-
                                 <td>@wells.Id</td>
                                 <td>@UserManager.GetUserAsync(User).Result.FirstName</td>
                                 <td>@UserManager.GetUserAsync(User).Result.LastName</td>
@@ -212,7 +211,7 @@
                                 <td>@wells.Latitude</td>
                                 <td>@wells.Longitude</td>
                                 <td>@wells.City</td>
-
+   
                                 <td>
                                     <a href="#" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                                     <a href="#" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

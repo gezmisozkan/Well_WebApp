@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Data;
 using TpaoProject1.Model;
@@ -60,10 +61,17 @@ namespace TpaoProject1.Controllers
         }
 
 
-        public IActionResult MainPage()
+        public async Task<IActionResult> MainPage()
         {
-                        var WellTopList= _dbContext.WellTops.ToList();
-                    return View(WellTopList);
+
+            //var WellTopList= _dbContext.WellTops.ToList();
+            var user = await _userManager.GetUserAsync(User);
+            var WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
+             
+                
+            
+
+            return View(WellTopList);
         }
 
         
