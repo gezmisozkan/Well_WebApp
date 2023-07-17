@@ -50,8 +50,11 @@ namespace TpaoProject1.Controllers
                 var UpdateDate = DateTime.Now;
 
                 WellTop welltop = new WellTop{ UserId = numUserId, Name = Name, Latitude = Latitude, Longitude = Longitude, WellTopType = WellTopType, City = City, InsertionDate = InsertionDate, UpdateDate = UpdateDate };
-
-                _dbContext.WellTops.Add(welltop);
+                var name = welltop.Name;
+                if (!IsNameExists(name))
+                {
+					_dbContext.WellTops.Add(welltop);
+				}
                 //_dbContext.SaveChanges();
                 await _dbContext.SaveChangesAsync();
                
@@ -61,9 +64,12 @@ namespace TpaoProject1.Controllers
 
             return View();
         }
+		public bool IsNameExists(string name)
+		{
+			return _dbContext.WellTops.Any(u => u.Name == name);
+		}
 
-
-        public async Task<IActionResult> MainPage()
+		public async Task<IActionResult> MainPage()
         {
 
 
