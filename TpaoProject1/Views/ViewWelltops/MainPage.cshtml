@@ -181,8 +181,8 @@
 							{						
 							<th>Kullanıcı</th>
 							}
-							<th>Kuyu Tipi</th>
 							<th>Kuyu Adı</th>
+							<th>Kuyu Tipi</th>
 							<th>Enlem</th>
 							<th>Boylam</th>
 							<th>Oluşturma Tarihi</th>
@@ -216,6 +216,10 @@
 									</td>
 								}
 								<td>
+									<p class="fw-normal mb-1">@wells.Name</p>
+									<p class="text-muted mb-0">@wells.City</p>
+								</td>
+								<td>
 									@{
 										if (wells.WellTopType == "arama")
 										{
@@ -233,10 +237,7 @@
 									}
 
 								</td>
-								<td>
-									<p class="fw-normal mb-1">@wells.Name</p>
-									<p class="text-muted mb-0">@wells.City</p>
-								</td>
+								
 								<td>
 									<p class="fw-normal mb-1">@wells.Latitude</p>
 								</td>
@@ -247,7 +248,7 @@
 								<td>@wells.UpdateDate</td>
 
 								<td>
-									<a href="#" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+									<a asp-controller="Well" asp-action="Index" asp-route-id="@wells.Id" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 									<a asp-controller="ViewWelltops" asp-action="Update" asp-route-id="@wells.Id" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 									<a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@wells.Id" class="delete" title="Kaydı Sil" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
 								</td>

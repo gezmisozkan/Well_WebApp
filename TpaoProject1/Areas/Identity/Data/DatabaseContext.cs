@@ -15,6 +15,7 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {
     }
     public DbSet<WellTop> WellTops { get; set; }
+    public DbSet<Formation> Formation { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
