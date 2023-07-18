@@ -17,13 +17,39 @@
 
         <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
+
+
+
+
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" asp-controller="Home" asp-action="Index" style=" color: #ffffff ">Anasayfa</a>
+                    <a class="nav-link mx-2 active" aria-current="page" asp-controller="ViewWelltops" asp-action="MainPage" style=" color: #ffffff ">Anasayfa</a>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link mx-2" asp-controller="Home" asp-action="History" style=" color: #ffffff ">Hakkımızda</a>
                 </li>
+
+
+                
+               
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" asp-controller="ViewWelltops" asp-action="AddWellTop" style=" color: #ffffff ">Kuyu Ekle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" asp-controller="ViewWelltops" asp-action="MainPage" style=" color: #ffffff ">Eklenen Kuyular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" asp-controller="Well" asp-action="Index" style=" color: #ffffff ">Eklenen Kuyular asdasda</a>
+                    </li>
+                }
+               
+
+
+
+
             </ul>
             <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
                 <li class="nav-item mx-2">
