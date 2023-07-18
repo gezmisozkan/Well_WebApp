@@ -242,8 +242,8 @@
 
 								<td>
 									<a href="#" class="view" title="Detayları Görüntüle" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-									<a href="#" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-									<a href="#" class="delete" title="Kaydı Sil" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+									<a asp-controller="ViewWelltops" asp-action="Update" asp-route-id="@wells.Id" class="edit" title="Düzenle" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+									<a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@wells.Id" class="delete" title="Kaydı Sil" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
 								</td>
 							</tr>
 						}

@@ -22,18 +22,22 @@ namespace TpaoProject1.Controllers
 		[HttpGet]
         public async Task<IActionResult> AddWellTop()
         {
+			ViewBag.ActionName = "AddWellTop";
+			ViewBag.ButtonText = "Kaydet";
 
-            return View();
+			return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddWellTop(WellTop model)
         {
-            var WellTopList = _dbContext.WellTops.ToList();
+			ViewBag.ActionName = "AddWellTop";
+			ViewBag.ButtonText = "Kaydet";
+			var WellTopList = _dbContext.WellTops.ToList();
 
-
-            // WellTop well = new WellTop();
-            if (ModelState.IsValid)
+			
+			// WellTop well = new WellTop();
+			if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
                 
@@ -51,12 +55,20 @@ namespace TpaoProject1.Controllers
 
                 WellTop welltop = new WellTop{ UserId = numUserId, Name = Name, Latitude = Latitude, Longitude = Longitude, WellTopType = WellTopType, City = City, InsertionDate = InsertionDate, UpdateDate = UpdateDate };
                 var name = welltop.Name;
-                if (!IsNameExists(name))
-                {
+                var longitude = welltop.Longitude;
+                var latitude = welltop.Latitude;
+
+				if (!IsNameExists(name) && !IsLocationExists(longitude, latitude))
+				{
 					_dbContext.WellTops.Add(welltop);
 				}
-                //_dbContext.SaveChanges();
-                await _dbContext.SaveChangesAsync();
+                else
+                {
+                    // Alert eklenecek.
+					return View();
+				}
+				//_dbContext.SaveChanges();
+				await _dbContext.SaveChangesAsync();
                
                 
                 return RedirectToAction("MainPage", "ViewWelltops");
@@ -67,6 +79,11 @@ namespace TpaoProject1.Controllers
 		public bool IsNameExists(string name)
 		{
 			return _dbContext.WellTops.Any(u => u.Name == name);
+		}
+
+		public bool IsLocationExists(string longitude, string latitude)
+		{
+			return _dbContext.WellTops.Any(u => u.Latitude == latitude) && _dbContext.WellTops.Any(u => u.Longitude == longitude);
 		}
 
 		public async Task<IActionResult> MainPage()
@@ -81,10 +98,37 @@ namespace TpaoProject1.Controllers
         }
 
         
-       
+       public IActionResult Delete(int id)
+        {
+			ViewBag.ActionName = "Delete";
+			ViewBag.ButtonText = "Sil";
+
+			var kuyu = _dbContext.WellTops.Find(id);
+            _dbContext.Remove(kuyu);
+            _dbContext.SaveChanges();
+			return RedirectToAction("MainPage", "ViewWelltops");
+		}
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            ViewBag.ActionName = "Update";
+            ViewBag.ButtonText = "Güncelle";
+			var kuyu = _dbContext.WellTops.Find(id);
+            var updateUserId = kuyu.UserId;
+            TempData["userid"] = updateUserId;
+
+			return View(kuyu);
+		}
+        [HttpPost]
+		public async Task<IActionResult> Update(WellTop welltop)
+        {
+            welltop.UserId = TempData["userid"].ToString();
+			_dbContext.SaveChanges();
+			return RedirectToAction("MainPage", "ViewWelltops");
+
+		}
 
 
-        
-      
-    }
+
+	}
 }
