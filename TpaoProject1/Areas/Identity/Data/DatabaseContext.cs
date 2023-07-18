@@ -14,7 +14,6 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
-    public DbSet<Game> Game { get; set; }
     public DbSet<WellTop> WellTops { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
