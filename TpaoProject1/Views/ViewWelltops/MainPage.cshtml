@@ -177,7 +177,10 @@
 				<table class="table table-striped table-hover table-bordered">
 					<thead class="bg-light">
 						<tr>
+							@if (User.IsInRole("Admin"))
+							{						
 							<th>Kullanıcı</th>
+							}
 							<th>Kuyu Tipi</th>
 							<th>Kuyu Adı</th>
 							<th>Enlem</th>
