@@ -203,15 +203,18 @@
 							<td>@wells.Longitude</td>
 							<td>@wells.City</td>
 							*@
-								<td>
-									<div class="d-flex align-items-center">
+								@if (User.IsInRole("Admin"))
+								{
+									<td>
+										<div class="d-flex align-items-center">
 
-										<div class="ms-3">
-											<p class="fw-bold mb-1">@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</p>
-											<p class="text-muted mb-0">@UserManager.GetUserAsync(User).Result.Email</p>
+											<div class="ms-3">
+												<p class="fw-bold mb-1">@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</p>
+												<p class="text-muted mb-0">@UserManager.GetUserAsync(User).Result.Email</p>
+											</div>
 										</div>
-									</div>
-								</td>
+									</td>
+								}
 								<td>
 									@{
 										if (wells.WellTopType == "arama")
