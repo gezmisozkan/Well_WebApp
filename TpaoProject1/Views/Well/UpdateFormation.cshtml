@@ -18,6 +18,12 @@
             Güncellenen formasyon sonrakinden küçük olmalıdır
         </div>
     }
+    else if (TempData["Error"].ToString() == "out of order")
+    {
+        <div class="alert alert-secondary" role="alert">
+            Güncellenen formasyon değeri 0 ila 10000 metre arasında olmalıdır
+        </div>
+    }
 }
 <form asp-controller="Well" asp-action="UpdateFormation" method="post">
     <input class="form-control" type="text" name="Name" value="@ViewData["name"]" aria-label="Disabled input example" disabled readonly>
@@ -30,7 +36,7 @@
             <option disabled>Select Formation Type</option>
             <option value="@Model.Form_type"> @Model.Form_type </option>
         </select>
-        <input type="text" name="Form_meter" class="form-control" placeholder="Update Formation Meter" required />
+        <input type="text" name="Form_meter" class="form-control" placeholder="Update Formation Meter (Between 0-10000)" required />
         <button type="submit" name="submit" class="btn btn-primary">Update</button>
     </div>
 </form>
