@@ -7,7 +7,7 @@ using TpaoProject1.Model;
 
 namespace TpaoProject1.Controllers
 {
-    public class ViewWelltopsController : Controller
+    public class ViewWelltopsController : BaseController
     {
         private readonly DatabaseContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -24,8 +24,7 @@ namespace TpaoProject1.Controllers
         {
 			ViewBag.ActionName = "AddWellTop";
 			ViewBag.ButtonText = "Kaydet";
-
-			return View();
+            return View();
         }
 
         [HttpPost]
@@ -60,19 +59,21 @@ namespace TpaoProject1.Controllers
 
 				if (!IsNameExists(name) && !IsLocationExists(longitude, latitude))
 				{
-					_dbContext.WellTops.Add(welltop);
-				}
+                    _dbContext.WellTops.Add(welltop);
+                }
                 else
                 {
-                    // Alert eklenecek.
-					return View();
+                    BasicNotification("Tekrar Deneyiniz...", NotificationType.Error, "Kuyu Eklenemedi");
+                    return View();
 				}
-				//_dbContext.SaveChanges();
-				await _dbContext.SaveChangesAsync();
-               
+                //_dbContext.SaveChanges();
+                BasicNotification("Anasayfaya yönlendiriliyorsunuz...", NotificationType.Success, "Kuyu Başarıyla Eklendi!");
+                await _dbContext.SaveChangesAsync();
+
                 
                 return RedirectToAction("MainPage", "ViewWelltops");
             }
+          
 
             return View();
         }
@@ -88,18 +89,17 @@ namespace TpaoProject1.Controllers
 
 		public async Task<IActionResult> MainPage()
         {
-
-
             //var WellTopList= _dbContext.WellTops.ToList();
             var user = await _userManager.GetUserAsync(User);
             var WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
-
             return View(WellTopList);
         }
 
         
        public IActionResult Delete(int id)
         {
+            DeleteNotification("Silinen Kuyu Geri Getirilmez!", NotificationType.Warning, "Emin Misiniz?");
+
 			ViewBag.ActionName = "Delete";
 			ViewBag.ButtonText = "Sil";
 

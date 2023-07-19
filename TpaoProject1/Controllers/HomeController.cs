@@ -9,7 +9,7 @@ using TpaoProject1.Models;
 
 namespace TpaoProject1.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly DatabaseContext _context;
 
@@ -21,7 +21,8 @@ namespace TpaoProject1.Controllers
         {
             return View();
         }
-        public IActionResult History() { 
+        public IActionResult History() {
+            BasicNotification("Slmmmmm", NotificationType.Success, "Hoşbuldummm!");
             return View();
         }
 

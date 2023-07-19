@@ -2298,3 +2298,4 @@ C:\Users\Betul\Desktop\tp\Dev-Test\TPAOMerge\Tpao-Dev-Test\Tpao-Dev-Test\TpaoPro
 C:\Users\Betul\Desktop\tp\Dev-Test\TPAOMerge\Tpao-Dev-Test\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\TpaoProject1.csproj.CopyComplete
 C:\Users\Betul\Desktop\tp\Dev-Test\TPAOMerge\Tpao-Dev-Test\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\TpaoProject1.genruntimeconfig.cache
 C:\Users\Betul\Desktop\tp\Dev-Test\TPAOMerge\Tpao-Dev-Test\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\ref\TpaoProject1.dll
+C:\Users\Betul\Desktop\tp\Dev-Test\TPAOMerge\Tpao-Dev-Test\Tpao-Dev-Test\TpaoProject1\bin\Debug\net6.0\libman.json

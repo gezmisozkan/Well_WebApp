@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TpaoProject1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.min.css" asp-append-version="true" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
    <partial name="_NavbarPartialView" />
+
     <div class="container">
+        <script src="~/lib/limonte-sweetalert2/sweetalert2.min.js" asp-append-version="true"></script>
         <main role="main">
             @RenderBody()
         </main>

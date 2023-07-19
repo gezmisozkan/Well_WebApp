@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8JsJcckr7OnPm8rPBtfC6xd35jB6hiNvuRYn7pWXmks=",
+  "Hash": "66ipAMtNMMUXwtgPE7Dbtsuo8yQqPjR4TxBbOZIByrI=",
   "Source": "TpaoProject1",
   "BasePath": "_content/TpaoProject1",
   "Mode": "Default",
@@ -2089,6 +2089,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\lib\\limonte-sweetalert2\\sweetalert2.min.css",
+      "SourceId": "TpaoProject1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\",
+      "BasePath": "_content/TpaoProject1",
+      "RelativePath": "lib/limonte-sweetalert2/sweetalert2.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\limonte-sweetalert2\\sweetalert2.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\lib\\limonte-sweetalert2\\sweetalert2.min.js",
+      "SourceId": "TpaoProject1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\",
+      "BasePath": "_content/TpaoProject1",
+      "RelativePath": "lib/limonte-sweetalert2/sweetalert2.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\limonte-sweetalert2\\sweetalert2.min.js"
     }
   ]
 }

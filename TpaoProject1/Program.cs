@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>().AddDefaultTokenProviders(
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -41,6 +42,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 app.UseAuthentication();;
 
 app.UseAuthorization();
