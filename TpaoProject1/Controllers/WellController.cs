@@ -94,13 +94,14 @@ namespace TpaoProject1.Controllers
             ViewData["latitude"] = well.Latitude;
             ViewData["longitude"] = well.Longitude;
             TempData["formation_well_id"] = well.Id;
+            
 
             return View(formation);
         }
         [HttpPost]
         public IActionResult UpdateFormation(Formation formation)
         {
-            formation.wellid = Int32.Parse(TempData["formation_well_id"].ToString()); // !!!!!!!!! kullanıcıyı geri yönlendirdiğimizde tempdatadaki veri siliniyor buna çözüm bul !!!!!!!
+            formation.wellid = Int32.Parse(TempData.Peek("formation_well_id").ToString()); // !!!!!!!!! kullanıcıyı geri yönlendirdiğimizde tempdatadaki veri siliniyor buna çözüm bul !!!!!!!
             var well = _context.WellTops.Find(formation.wellid);
             ViewData["name"] = well.Name;
             ViewData["latitude"] = well.Latitude;
@@ -110,7 +111,11 @@ namespace TpaoProject1.Controllers
             var index = formation_list.FindIndex(x => x.Id == formation.Id);
             var old_formation = _context.Formation.Find(formation.Id);
 
-
+            if (formation.Form_meter < 0 || formation.Form_meter > 10000)
+            {
+                TempData["Error"] = "out of order";
+                return View(old_formation);
+            }
             if ((formation_list.Count() - 1 > index) && formation.Form_meter > formation_list[index + 1].Form_meter)
             {
                 TempData["Error"] = "bigger";
