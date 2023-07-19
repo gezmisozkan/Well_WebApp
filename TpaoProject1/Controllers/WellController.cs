@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using TpaoProject1.Data;
 using TpaoProject1.Model;
 
@@ -19,7 +20,6 @@ namespace TpaoProject1.Controllers
         public IActionResult ViewWell(int id)
         {
             var well = _context.WellTops.Find(id);
-            
             var formation = _context.Formation.Where(f => f.wellid == id).ToList();
 
             var all = new WellAndFormation()
@@ -28,19 +28,6 @@ namespace TpaoProject1.Controllers
                 well = well
             };
             return View(all);
-        }
-        public IActionResult AddWell()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ActionName("AddWell")]
-        public IActionResult AddWell(WellTop well /*string Name, string Latitude, string Longitude*/)
-        {
-            _context.WellTops.Add(well);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult AddFormation(int id)
@@ -62,18 +49,22 @@ namespace TpaoProject1.Controllers
                 Form_type = Form_type
             };
             List<Formation> formation_list;
-            int? biggest_formation_meter=-1;
+            int? biggest_formation_meter = -1;
             formation_list = _context.Formation.Where(x => x.wellid == id).OrderByDescending(x => x.Form_meter).ToList();
-            if(formation_list.Count != 0)
+            if (formation_list.Count != 0)
                 biggest_formation_meter = formation_list.First().Form_meter;
             var Well = _context.WellTops.Find(id);
             var isExist = _context.Formation.Where(x => x.wellid == id).Where(x => x.Form_type == Form_type).Count();
-            
-            if (isExist == 0 && Form_meter <= biggest_formation_meter)
+            if (Form_meter<0 || Form_meter>10000)
             {
-				TempData["status"] = "lower_formation";
-				return View(Well);
-			}
+                TempData["status"] = "out of order";
+                return View(Well);
+            }
+            else if (isExist == 0 && Form_meter <= biggest_formation_meter)
+            {
+                TempData["status"] = "lower_formation";
+                return View(Well);
+            }
             else if (isExist == 0)
             {
                 _context.Formation.Add(formation);
@@ -95,22 +86,62 @@ namespace TpaoProject1.Controllers
         }
         public IActionResult UpdateFormation(int id)
         {
+            var formation = _context.Formation.Find(id);
+            var well = _context.WellTops.Find(_context.Formation.Find(id).wellid);
 
-            var well = _context.WellTops.Find(id);
-            return View(well);
+            ViewData["name"] = well.Name;
+            ViewData["latitude"] = well.Latitude;
+            ViewData["longitude"] = well.Longitude;
+            TempData["formation_well_id"] = well.Id;
+
+            return View(formation);
         }
         [HttpPost]
-        public IActionResult UpdateFormation(WellTop well) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public IActionResult UpdateFormation(Formation formation)
         {
+            formation.wellid = Int32.Parse(TempData["formation_well_id"].ToString()); // !!!!!!!!! kullanıcıyı geri yönlendirdiğimizde tempdatadaki veri siliniyor buna çözüm bul !!!!!!!
+            var well = _context.WellTops.Find(formation.wellid);
+            ViewData["name"] = well.Name;
+            ViewData["latitude"] = well.Latitude;
+            ViewData["longitude"] = well.Longitude;
 
-            _context.WellTops.Update(well);
-            _context.SaveChanges();
+            var formation_list = _context.Formation.Where(x => x.wellid == formation.wellid).ToList();
+            var index = formation_list.FindIndex(x => x.Id == formation.Id);
+            var old_formation = _context.Formation.Find(formation.Id);
 
-            return RedirectToAction("Index");
+
+            if ((formation_list.Count() - 1 > index) && formation.Form_meter > formation_list[index + 1].Form_meter)
+            {
+                TempData["Error"] = "bigger";
+                return View(old_formation);
+            }
+            else if (index > 0 && formation.Form_meter < formation_list[index - 1].Form_meter)
+            {
+                TempData["Error"] = "smaller";
+                return View(old_formation);
+            }
+            else if ((index == 0 && formation_list.Count() > 1 && formation.Form_meter < formation_list[index + 1].Form_meter) || index == 0 && formation_list.Count() == 1 || (index == formation_list.Count() - 1 && formation.Form_meter > formation_list[index - 1].Form_meter) || (formation.Form_meter > formation_list[index - 1].Form_meter && formation.Form_meter < formation_list[index + 1].Form_meter))
+            {
+                TempData["Error"] = "successful";
+                _context.Formation.Update(formation);
+                _context.SaveChanges();
+
+                var all = new WellAndFormation()
+                {
+                    formation = _context.Formation.Where(x => x.wellid == formation.wellid).ToList(),
+                    well = _context.WellTops.Find(formation.wellid)
+
+                };
+                return View("ViewWell", all);
+            }
+            else
+            {
+                return View(old_formation);
+            }
         }
-        public IActionResult RemoveWell(int id)
+        public IActionResult RemoveFormation(int id)
         {
-            _context.Remove(_context.WellTops.Find(id));
+            _context.Remove(_context.Formation.Find(id));
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

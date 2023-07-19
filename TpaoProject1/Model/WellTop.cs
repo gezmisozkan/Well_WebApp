@@ -14,14 +14,14 @@ namespace TpaoProject1.Model
 		[RegularExpression(@"^([A-Z]+(?: [A-Z]+)?)-([0-9]+)+$", ErrorMessage = "Lütfen istenen formatta giriniz!")]
 		public string Name { get; set; }
 		[Required]
-		[RegularExpression(@"^(3[6-9]|4[0-2])(\.[0-9]{6})$", ErrorMessage = "Girilen enlem koordinat tipi hatalı!")]
+		[RegularExpression(@"^(2[6-9]|4[0-5]|3[0-9])(\.[0-9]{6})$", ErrorMessage = "Girilen enlem koordinat tipi hatalı!")]
 		public string Latitude { get; set; }
 		[Required]
-		[RegularExpression(@"^(2[6-9]|4[0-5]|3[0-9])(\.[0-9]{6})$", ErrorMessage = "Girilen boylam koordinat tipi hatalı!")]
+		[RegularExpression(@"^(3[6-9]|4[0-2])(\.[0-9]{6})$", ErrorMessage = "Girilen boylam koordinat tipi hatalı!")]
 		public string Longitude { get; set; }
-		
-		
-		public string WellTopType { get; set; }
+        
+
+        public string WellTopType { get; set; }
 		public string? City { get; set; }
 		public DateTime InsertionDate { get; set; } = DateTime.Now;
 		public DateTime UpdateDate { get; set; } = DateTime.Now;
