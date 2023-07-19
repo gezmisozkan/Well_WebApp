@@ -89,10 +89,35 @@ namespace TpaoProject1.Controllers
 
 		public async Task<IActionResult> MainPage()
         {
-            //var WellTopList= _dbContext.WellTops.ToList();
+
+
             var user = await _userManager.GetUserAsync(User);
-            var WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
-            return View(WellTopList);
+            var WellTopList = _dbContext.WellTops.ToList();
+
+
+            if (User.IsInRole("Admin"))
+            {
+                WellTopList = _dbContext.WellTops.ToList();
+            }
+            else
+            {
+                WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
+            }
+
+
+            var users = _dbContext.Users.ToList();
+
+
+            var viewModel = new UserRolesViewModel
+            {
+                Kullanicilar = users,
+                Kuyular = WellTopList
+
+
+            };
+
+
+            return View(viewModel);
         }
 
         

@@ -1,14 +1,124 @@
 ﻿@page
 @model EmailModel
+
+<head>
+	<style>
+		.FlexContainer {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: center;
+			align-content: baseline;
+			background-color: #edede9;
+			height: 80vh;
+			width: 80vh;
+			overflow: auto;
+			flex-direction: row;
+			margin-left: 50vh;
+		}
+
+		.attribute a {
+			display: flex;
+			border-radius: 8px;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: center;
+			align-content: baseline;
+			background: #4c956c;
+			color: #fff;
+			padding: 5px 10px;
+			overflow: auto;
+			text-decoration: none;
+		}
+
+		.form-control {
+			margin-top: 10px;
+			position: relative;
+			margin-bottom: 1rem;
+		}
+
+		.content-center {
+			width: 100%;
+			padding: 15px;
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+
+		.content-box {
+			width: 100%;
+			max-width: 420px;
+			min-width: 320px;
+			margin: auto;
+		}
+
+		.text-center {
+			text-align: center !important;
+		}
+
+		.text-system {
+			color: #ed1c25 !important;
+		}
+
+		.btn-primary:hover {
+			color: #fff;
+			background-color: #ed1c00;
+			border-color: #ed1c25;
+		}
+
+		/*  .btn-block {
+													display: block;
+													width: 100%;
+												}*/
+
+		.btn-primary {
+			color: #fff;
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn {
+			display: inline-block;
+			font-weight: 400;
+			color: white;
+			text-align: center;
+			vertical-align: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			border: 1px solid transparent;
+			background-color: #BB242B;
+			padding: 0.375rem 0.75rem;
+			font-size: 1rem;
+			line-height: 1.5;
+			border-radius: 0.25rem;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+	</style>
+</head>
+
 @{
-    ViewData["Title"] = "Manage Email";
+    //ViewData["Title"] = "Manage Email";
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
+    <div class="col-md-12 d-flex justify-content-center mt-3">
+        <h2 style="text-align: center;">Email Güncelle</h2>
+    </div>
+</div>
+<div class="row justify-content-center">
     <div class="col-md-6">
+
+        <div class="content-box">
+
+            <div id="notify">
+            </div>
+            <div class="border p-4 rounded">
+
+
         <form id="email-form" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             @if (Model.IsEmailConfirmed)
@@ -26,7 +136,7 @@
                 <div class="form-floating">
                     <input asp-for="Email" class="form-control" disabled />
                     <label asp-for="Email" class="form-label"></label>
-                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Doğrulama maili gönder</button>
                 </div>
             }
             <div class="form-floating">
@@ -34,10 +144,14 @@
                 <label asp-for="Input.NewEmail" class="form-label"></label>
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Change email</button>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Güncelle</button>
         </form>
+            </div>
+
+        </div>
     </div>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

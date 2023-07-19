@@ -2,6 +2,9 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using TpaoProject1.Data;
 using TpaoProject1.Model;
+using TpaoProject1.Data;
+using TpaoProject1.Model;
+using TpaoProject1.Models;
 
 namespace TpaoProject1.Controllers
 {
