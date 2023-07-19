@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System;
 using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Data;
@@ -7,24 +8,29 @@ using TpaoProject1.Model;
 
 namespace TpaoProject1.Controllers
 {
-    public class ViewWelltopsController : BaseController
+    public class ViewWelltopsController : Controller
     {
         private readonly DatabaseContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly MapsGeocodingService _geocodingService;
 
-        public ViewWelltopsController(DatabaseContext dbContext, UserManager<ApplicationUser> userManager)
+
+        public ViewWelltopsController(DatabaseContext dbContext, UserManager<ApplicationUser> userManager, MapsGeocodingService geocodingService)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            _geocodingService = geocodingService;
+
         }
 
 
-		[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> AddWellTop()
         {
 			ViewBag.ActionName = "AddWellTop";
 			ViewBag.ButtonText = "Kaydet";
-            return View();
+
+			return View();
         }
 
         [HttpPost]
@@ -38,6 +44,20 @@ namespace TpaoProject1.Controllers
 			// WellTop well = new WellTop();
 			if (ModelState.IsValid)
             {
+                double lati = double.Parse(model.Latitude);
+                double longi = double.Parse(model.Longitude);
+                string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
+
+                string geocodingData = await _geocodingService.GetGeocodingData(lati, longi, apiKey);
+                if (!string.IsNullOrEmpty(geocodingData))
+                {
+                    JObject jsonObject = JObject.Parse(geocodingData);
+                    string city = jsonObject["results"][5]["address_components"]
+                                         .FirstOrDefault(c => c["types"].Any(t => t.ToString() == "locality" || t.ToString() == "administrative_area_level_1"))?["long_name"]?.ToString();
+
+                    model.City = city;
+                }
+
                 var user = await _userManager.GetUserAsync(User);
                 
                 model.UserId = user.Id;
@@ -48,7 +68,7 @@ namespace TpaoProject1.Controllers
                 var Latitude = model.Latitude;
                 var Longitude = model.Longitude;
                 var WellTopType = model.WellTopType;
-                var City = "Ankara";
+                var City = model.City;
                 var InsertionDate = DateTime.Now;
                 var UpdateDate = DateTime.Now;
 
@@ -146,6 +166,20 @@ namespace TpaoProject1.Controllers
         [HttpPost]
 		public async Task<IActionResult> Update(WellTop welltop)
         {
+            
+            double lati = double.Parse(welltop.Latitude);
+            double longi = double.Parse(welltop.Longitude);
+            string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
+
+            string geocodingData = await _geocodingService.GetGeocodingData(lati, longi, apiKey);
+            if (!string.IsNullOrEmpty(geocodingData))
+            {
+                JObject jsonObject = JObject.Parse(geocodingData);
+                string city = jsonObject["results"][5]["address_components"]
+                                     .FirstOrDefault(c => c["types"].Any(t => t.ToString() == "locality" || t.ToString() == "administrative_area_level_1"))?["long_name"]?.ToString();
+
+                welltop.City = city;
+            }
             welltop.UserId = TempData["userid"].ToString();
             _dbContext.WellTops.Update(welltop);
 			_dbContext.SaveChangesAsync();

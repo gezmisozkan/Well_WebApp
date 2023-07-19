@@ -6,16 +6,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DatabaseContextConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseContextConnection' not found.");
-
+var cultureInfo = new CultureInfo("en-US"); // Burada istedi�iniz dil ve b�lgeyi belirtebilirsiniz
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
     options.UseSqlServer(connectionString);
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("en-US"); // �stedi�iniz dil ve b�lgeyi burada belirtebilirsiniz
+});
 
 builder.Services.AddDefaultIdentity<ApplicationUser>().AddDefaultTokenProviders()
     .AddRoles<IdentityRole>()
@@ -30,6 +38,9 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireUppercase = false;
 });
 builder.Services.AddRazorPages();
+
+builder.Services.AddHttpClient<MapsGeocodingService>();
+
 
 //builder.Services.ConfigureDbContext(builder.Configuration);
 var app = builder.Build();
