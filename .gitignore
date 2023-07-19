@@ -1,3 +1,6 @@
 
 *.dll
 *.cache
+*.cache
+*.dll
+*.editorconfig

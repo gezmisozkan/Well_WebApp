@@ -2,6 +2,15 @@
 @{
     ViewData["Title"] = "ViewWell";
 }
+<head>
+    <style>
+        .gradient-formation {
+            width: 300px; /* Adjust the width and height as needed */
+            height: 200px;
+            background: linear-gradient(to bottom, #ff0000, #00ff00); /* Adjust colors as needed */
+        }
+    </style>
+</head>
 <h1>ViewWell</h1>
 @model WellAndFormation
 
@@ -79,6 +88,12 @@
             </tbody>
 
         </table>
+        <div class="gradient-formation">
+            @foreach (var item in Model.formation)
+            {
+                <div style="width:50px; height:30px; background-color:#0000ff ">  </div>
+            }
+        </div>
     }
     else
     {
