@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ErIigjZWA5d6HBZ+vcg89lmR02EXt2FrcXUj/Tqup+WMBlVWM5Lo6QiuwKEegP+3LYXnj07vL/a8rcpcKQvvxg==",
+  "dgSpecHash": "VVfV7Ns6aNMddI/+QDWVFFTWdqfglqHbkbw95/No5QA5aCgiiDsFL/z7n8HoXlSp0f9KYMCROL9iO5IAnF908A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-AddWelltops\\TpaoProject1\\TpaoProject1.csproj",
+  "projectFilePath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gezmi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\gezmi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -12,7 +12,7 @@ using TpaoProject1.Data;
 namespace TpaoProject1.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230717071920_initial")]
+    [Migration("20230719073621_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -50,6 +50,22 @@ namespace TpaoProject1.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "341743f0-asd2–42de-afbf-59kmkkmk72cf6",
+                            ConcurrencyStamp = "341743f0-asd2–42de-afbf-59kmkkmk72cf6",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
+                            ConcurrencyStamp = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -139,6 +155,13 @@ namespace TpaoProject1.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
+                            RoleId = "341743f0-asd2–42de-afbf-59kmkkmk72cf6"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -233,9 +256,28 @@ namespace TpaoProject1.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bba3e006-04e2-4b5e-a84d-198c0022c3c6",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            FirstName = "admin",
+                            LastName = "admin",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOHnBmsMERED05C0n4zkUjTcLMCz+vEm4huSv1SpPd/N9oTHPWrbl87VEEq4u0qdCA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "15a82e1c-3ca4-482f-a193-a5dc8a082087",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        });
                 });
 
-            modelBuilder.Entity("TpaoProject1.Model.Game", b =>
+            modelBuilder.Entity("TpaoProject1.Model.Formation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -243,21 +285,18 @@ namespace TpaoProject1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Difference")
+                    b.Property<int?>("Form_meter")
                         .HasColumnType("int");
 
-                    b.Property<int>("GuessNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("Form_type")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RememberNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Success")
+                    b.Property<int>("wellid")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game");
+                    b.ToTable("Formation");
                 });
 
             modelBuilder.Entity("TpaoProject1.Model.WellTop", b =>

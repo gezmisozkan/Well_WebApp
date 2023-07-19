@@ -18,6 +18,13 @@
             Yeni formasyon metresi önceki formasyondan daha küçük olamaz
         </div>
     }
+    else if (TempData["status"].ToString() == "out of order")
+    {
+        <div class="alert alert-secondary" role="alert">
+            Formasyon sınırları 0 ila 10000 arasında olmalıdır
+        </div>
+    }
+    
 }
 
 <form asp-controller="Well" asp-action="AddFormation" method="post">
@@ -33,11 +40,12 @@
             @{
                 for (char i = 'A'; i <= 'Z'; i++)
                 {
+                    
                     <option value="@i"> @i </option>
                 }
             }
         </select>
-        <input type="text" name="Form_meter" class="form-control" placeholder="Enter Formation Meter" required />
+        <input type="text" name="Form_meter" class="form-control" placeholder="Enter Formation Meter (Between 0-10000) " required />
         <button type="submit" name="submit" class="btn btn-primary">Add</button>
     </div>
 </form>
