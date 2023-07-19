@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TpaoProject1.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\css\\empty_state.png",
+      "PackagePath": "staticwebassets\\css\\empty_state.png"
+    },
+    {
       "Id": "C:\\Users\\Betul\\Desktop\\tp\\Dev-Test\\TPAOMerge\\Tpao-Dev-Test\\Tpao-Dev-Test\\TpaoProject1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

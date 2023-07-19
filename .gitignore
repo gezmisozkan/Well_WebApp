@@ -7,3 +7,6 @@
 /TpaoProject1/Model/WellTop.cs
 /TpaoProject1/Services
 TpaoProject1/appsettings.json
+*.1
+*.vsidx
+*.dll

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="wwwroot\css\empty_state.png" />
   </ItemGroup>
 
   <ItemGroup>
