@@ -2,14 +2,27 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Data;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DatabaseContextConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseContextConnection' not found.");
-
+var cultureInfo = new CultureInfo("en-US"); // Burada istediðiniz dil ve bölgeyi belirtebilirsiniz
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("en-US"); // Ýstediðiniz dil ve bölgeyi burada belirtebilirsiniz
+});
+
+builder.Services.AddDefaultIdentity<ApplicationUser>().AddDefaultTokenProviders()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>();
 
 // Add services to the container.
@@ -21,8 +34,10 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 builder.Services.AddRazorPages();
 
-//builder.Services.ConfigureDbContext(builder.Configuration);
+builder.Services.AddHttpClient<MapsGeocodingService>();
 
+
+//builder.Services.ConfigureDbContext(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +52,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
@@ -45,5 +60,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+
 
 app.Run();

@@ -1,0 +1,24 @@
+﻿@using TpaoProject1.Model;
+@{
+    ViewData["Title"] = "UpdateFormation";
+}
+@model WellTop
+<h1>Update Formation</h1>
+<form asp-controller="Well" asp-action="Update" method="post">
+
+    <div class="input-group">
+        <span class="input-group-text ">Enter Formation Type and Meter</span>
+        <select class="form-select " name="Form_type" required>
+            <option disabled>Select Formation Type</option>
+            @{
+                int count = 1;
+                for (char i = 'A'; i <= 'Z'; i++, count++)
+                {
+                    <option value="@count"> @i </option>
+                }
+            }
+        </select>
+        <input type="text" name="Form_meter" class="form-control" placeholder="Enter Formation Meter" required />
+        <button type="submit" name="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
