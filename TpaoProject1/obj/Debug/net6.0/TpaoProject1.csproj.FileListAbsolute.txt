@@ -2576,3 +2576,15 @@ C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-Dev-Test\TpaoProject1\obj\D
 C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\TpaoProject1.csproj.CopyComplete
 C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\TpaoProject1.genruntimeconfig.cache
 C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-Dev-Test\TpaoProject1\obj\Debug\net6.0\ref\TpaoProject1.dll
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.csproj.AssemblyReference.cache
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.AssemblyInfoInputs.cache
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.AssemblyInfo.cs
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.csproj.CoreCompileInputs.cache
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.RazorAssemblyInfo.cache
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.RazorAssemblyInfo.cs
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.dll
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\refint\TpaoProject1.dll
+C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\Tpao-deneme\TpaoProject1\obj\Debug\net6.0\TpaoProject1.pdb

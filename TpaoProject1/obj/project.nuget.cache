@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VVfV7Ns6aNMddI/+QDWVFFTWdqfglqHbkbw95/No5QA5aCgiiDsFL/z7n8HoXlSp0f9KYMCROL9iO5IAnF908A==",
+  "dgSpecHash": "Qf+TLW96Utt0OcQPi5UO0m1iEZPJV+yWBSRyOl0+ToLhABrkwjv9+9q94EFhSgxKph7WbOgwWbhJM4RnoBFnKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
+  "projectFilePath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-deneme\\TpaoProject1\\TpaoProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gezmi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\gezmi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

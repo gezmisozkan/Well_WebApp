@@ -11715,11 +11715,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
+      "projectUniqueName": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-deneme\\TpaoProject1\\TpaoProject1.csproj",
       "projectName": "TpaoProject1",
-      "projectPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
+      "projectPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-deneme\\TpaoProject1\\TpaoProject1.csproj",
       "packagesPath": "C:\\Users\\gezmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\obj\\",
+      "outputPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-deneme\\TpaoProject1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gezmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
