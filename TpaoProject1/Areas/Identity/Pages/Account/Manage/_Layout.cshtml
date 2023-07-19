@@ -1,0 +1,39 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<h1> </h1>
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <h1 style="text-align: center;">Hesap Ayarları</h1>
+    </div>
+</div>
+<div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <partial name="_ManageNav"  />
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 ">
+            @RenderBody()
+        </div>
+    </div>
+       
+  
+</div>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

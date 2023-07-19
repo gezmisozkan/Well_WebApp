@@ -12,6 +12,18 @@
 
 <div class="col-lg-12">
     <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
-        <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1900000/dogalgaz-sondaj-gemisi-aa-1900011.jpg" class="image-fatih" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı">
+        @if (!User.Identity.IsAuthenticated)
+        {
+          
+            <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1900000/dogalgaz-sondaj-gemisi-aa-1900011.jpg" class="image-fatih" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı">
+
+        }
+        else
+        {
+            
+        }
+
     </a>
+
+
 </div>

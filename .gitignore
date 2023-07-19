@@ -1,0 +1,6 @@
+
+TpaoProject1/appsettings.json
+*.dll
+*.exe
+*.cache
+*.editorconfig

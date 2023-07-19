@@ -1,0 +1,43 @@
+﻿@using TpaoProject1.Model;
+@{
+    ViewData["Title"] = "Add Formation";
+}
+@model WellTop
+<h1>Add Formation</h1>
+@if (TempData["status"] != null)
+{
+    if (TempData["status"].ToString() == "same_formation")
+    {
+        <div class="alert alert-secondary" role="alert">
+            Girilen formasyon zaten var
+        </div>
+    }
+    else if (TempData["status"].ToString() == "lower_formation")
+    {
+        <div class="alert alert-secondary" role="alert">
+            Yeni formasyon metresi önceki formasyondan daha küçük olamaz
+        </div>
+    }
+}
+
+<form asp-controller="Well" asp-action="AddFormation" method="post">
+
+    <input class="form-control" type="text" asp-for="Name" value="@Model.Name" aria-label="Disabled input example" disabled readonly>
+    <input class="form-control" type="text" asp-for="Latitude" value="@Model.Latitude" aria-label="Disabled input example" disabled readonly>
+    <input class="form-control" type="text" asp-for="Longitude" value="@Model.Longitude" aria-label="Disabled input example" disabled readonly>
+
+    <div class="input-group">
+        <span class="input-group-text ">Enter Formation Type and Meter</span>
+        <select class="form-select " name="Form_type" required>
+            <option disabled>Select Formation Type</option>
+            @{
+                for (char i = 'A'; i <= 'Z'; i++)
+                {
+                    <option value="@i"> @i </option>
+                }
+            }
+        </select>
+        <input type="text" name="Form_meter" class="form-control" placeholder="Enter Formation Meter" required />
+        <button type="submit" name="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
