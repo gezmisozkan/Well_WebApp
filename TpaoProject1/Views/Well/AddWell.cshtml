@@ -1,0 +1,14 @@
+﻿@using TpaoProject1.Model;
+@{
+    ViewData["Title"] = "AddWell";
+}
+@model WellTop
+<h1>AddWell</h1>
+
+<form asp-controller="Well" asp-action="AddWell" method="post">
+    <input asp-for="Name" type="text" placeholder="Enter a name" />
+    <input asp-for="Latitude" type="text" placeholder="Enter latitude" />
+    <input asp-for="Longitude" type="text" placeholder="Enter longtitude" />
+    <input type="submit" name="submit" />
+
+</form>

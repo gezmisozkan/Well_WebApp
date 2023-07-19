@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\TpaoProject1.csproj": {}
+    "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\TpaoProject1.csproj": {
+    "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\TpaoProject1.csproj",
+        "projectUniqueName": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
         "projectName": "TpaoProject1",
-        "projectPath": "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\TpaoProject1.csproj",
-        "packagesPath": "C:\\Users\\Betul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Betul\\Desktop\\Tpao-authentication\\Tpao-authentication\\TpaoProject1\\obj\\",
+        "projectPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\TpaoProject1.csproj",
+        "packagesPath": "C:\\Users\\gezmi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\Tpao-Dev-Test\\TpaoProject1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Betul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gezmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +69,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.14, )"
+              "version": "[6.0.15, )"
             }
           },
           "imports": [
@@ -90,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
