@@ -116,17 +116,18 @@ namespace TpaoProject1.Controllers
 			var kuyu = _dbContext.WellTops.Find(id);
             var updateUserId = kuyu.UserId;
             TempData["userid"] = updateUserId;
-
 			return View(kuyu);
 		}
         [HttpPost]
 		public async Task<IActionResult> Update(WellTop welltop)
         {
             welltop.UserId = TempData["userid"].ToString();
-			_dbContext.SaveChanges();
+            _dbContext.WellTops.Update(welltop);
+			_dbContext.SaveChangesAsync();
 			return RedirectToAction("MainPage", "ViewWelltops");
 
 		}
+
 
 
 

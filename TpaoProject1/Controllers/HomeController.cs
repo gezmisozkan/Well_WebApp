@@ -22,7 +22,6 @@ namespace TpaoProject1.Controllers
             return View();
         }
         public IActionResult History() {
-            BasicNotification("Slmmmmm", NotificationType.Success, "Hoşbuldummm!");
             return View();
         }
 
