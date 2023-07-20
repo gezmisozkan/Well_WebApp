@@ -1,6 +1,5 @@
 ﻿@using TpaoProject1.Model;
 @model UserRolesViewModel
-@model List<WellTop>;
 @using Microsoft.AspNetCore.Identity
 @using TpaoProject1.Areas.Identity.Data;
 
@@ -300,7 +299,7 @@
     </script>
 </head>
 <body>
-    @if (Model.Count() > 0)
+    @if (Model.Kuyular.Count() > 0)
     {
         <div class="container-xl">
             <div class="table-responsive">
@@ -323,7 +322,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var wells in Model)
+                            @foreach (var wells in Model.Kuyular)
                             {
                                 <tr>
                                     @*<td>@wells.Id</td>
