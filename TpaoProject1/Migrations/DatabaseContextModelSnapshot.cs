@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TpaoProject1.Data;
 
@@ -12,11 +11,9 @@ using TpaoProject1.Data;
 namespace TpaoProject1.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230719064007_db_Staj")]
-    partial class db_Staj
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -262,16 +259,16 @@ namespace TpaoProject1.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3b47f035-e6b5-4198-99b6-6d16ed1a5126",
+                            ConcurrencyStamp = "10a7ba06-5998-4735-8234-c5d6376e8061",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
                             LastName = "admin",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFWfbuGgOGzhOq27gLUV2N6wTkDxvVXCTg3IWFAXpvk9LLqeJuHP4K0+Zuo5utZJIg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOazQMBgcWOXtejferlVJClwRj81ONSlOOZMb04loCTb1Wx2IpHRzDUCHe6hq/wGWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a6a974b-8b8d-49da-abbd-0fe89449cf12",
+                            SecurityStamp = "375189d8-03ad-4f24-b610-7d92c33f62ed",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });

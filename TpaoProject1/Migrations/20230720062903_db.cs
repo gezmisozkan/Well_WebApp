@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TpaoProject1.Migrations
 {
     /// <inheritdoc />
-    public partial class db_Staj : Migration
+    public partial class db : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -212,7 +212,7 @@ namespace TpaoProject1.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "3b47f035-e6b5-4198-99b6-6d16ed1a5126", "admin@admin.com", true, "admin", "admin", false, null, null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEFWfbuGgOGzhOq27gLUV2N6wTkDxvVXCTg3IWFAXpvk9LLqeJuHP4K0+Zuo5utZJIg==", null, false, "2a6a974b-8b8d-49da-abbd-0fe89449cf12", false, "admin@admin.com" });
+                values: new object[] { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "10a7ba06-5998-4735-8234-c5d6376e8061", "admin@admin.com", true, "admin", "admin", false, null, null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEOazQMBgcWOXtejferlVJClwRj81ONSlOOZMb04loCTb1Wx2IpHRzDUCHe6hq/wGWg==", null, false, "375189d8-03ad-4f24-b610-7d92c33f62ed", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

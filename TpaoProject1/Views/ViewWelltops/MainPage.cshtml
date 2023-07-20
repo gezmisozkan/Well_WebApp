@@ -325,15 +325,6 @@
                             @foreach (var wells in Model.Kuyular)
                             {
                                 <tr>
-                                    @*<td>@wells.Id</td>
-                            <td>@UserManager.GetUserAsync(User).Result.FirstName</td>
-                            <td>@UserManager.GetUserAsync(User).Result.LastName</td>
-                            <td>@UserManager.GetUserAsync(User).Result.Email</td>
-                            <td>@wells.Name</td>
-                            <td>@wells.Latitude</td>
-                            <td>@wells.Longitude</td>
-                            <td>@wells.City</td>
-                            *@
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <td>

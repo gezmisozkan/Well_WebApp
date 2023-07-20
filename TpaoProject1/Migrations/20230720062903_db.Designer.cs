@@ -12,7 +12,7 @@ using TpaoProject1.Data;
 namespace TpaoProject1.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230719065631_db")]
+    [Migration("20230720062903_db")]
     partial class db
     {
         /// <inheritdoc />
@@ -262,16 +262,16 @@ namespace TpaoProject1.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "15d4dccf-8696-4472-bb4c-ba6cb57b5df9",
+                            ConcurrencyStamp = "10a7ba06-5998-4735-8234-c5d6376e8061",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
                             LastName = "admin",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHh0gX5OgbtZv25NtyIqKFXx/HIxz5L6h7VxTm6ajwYFDBnkfJZFUxVlx9nDtiQbmg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOazQMBgcWOXtejferlVJClwRj81ONSlOOZMb04loCTb1Wx2IpHRzDUCHe6hq/wGWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2772ef04-e81c-44dc-871d-66d3c0a8c7bb",
+                            SecurityStamp = "375189d8-03ad-4f24-b610-7d92c33f62ed",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });
