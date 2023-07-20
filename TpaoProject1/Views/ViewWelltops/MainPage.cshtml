@@ -97,7 +97,7 @@
             for (let i = 0; i < beaches.length; i++) {
                 const beach = beaches[i];
 
-                new google.maps.Marker({
+                const marker = new google.maps.Marker({
                     position: { lat: beach[1], lng: beach[2] },
                     map,
                     icon: image,
@@ -105,7 +105,16 @@
                     title: beach[0],
                     zIndex: beach[3],
                 });
+
+                // Add a click event listener to show the marker title in an info window
+                marker.addListener("click", () => {
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: beach[0], // Set the content of the info window to the marker title
+                    });
+                    infoWindow.open(map, marker); // Open the info window on the clicked marker
+                });
             }
+
         }
 
         window.initMap = initMap;
