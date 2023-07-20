@@ -290,6 +290,10 @@
             align-items: center;
             text-align: center;
         }
+
+        .table-responsive {
+            max-height: 300px;
+        }
     </style>
 
     <script>
@@ -305,7 +309,7 @@
             <div class="table-responsive">
                 <div class="table-wrapper">
 
-                    <table class="table table-striped table-hover table-bordered">
+                    <table class="table table-responsive table-striped table-hover table-bordered">
                         <thead class="bg-light">
                             <tr>
                                 @if (User.IsInRole("Admin"))
@@ -388,7 +392,11 @@
                     </table>
 
                 </div>
+                
             </div>
+            <div id="map"></div>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4&callback=initMap&v=weekly"
+                    defer></script>
         </div>
     }
     else
