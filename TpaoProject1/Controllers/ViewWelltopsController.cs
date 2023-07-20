@@ -44,6 +44,8 @@ namespace TpaoProject1.Controllers
 			// WellTop well = new WellTop();
 			if (ModelState.IsValid)
             {
+               int counter = 0;
+                string city = null;
                 double lati = double.Parse(model.Latitude);
                 double longi = double.Parse(model.Longitude);
                 string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
@@ -51,9 +53,14 @@ namespace TpaoProject1.Controllers
                 string geocodingData = await _geocodingService.GetGeocodingData(lati, longi, apiKey);
                 if (!string.IsNullOrEmpty(geocodingData))
                 {
-                    JObject jsonObject = JObject.Parse(geocodingData);
-                    string city = jsonObject["results"][5]["address_components"]
-                                         .FirstOrDefault(c => c["types"].Any(t => t.ToString() == "locality" || t.ToString() == "administrative_area_level_1"))?["long_name"]?.ToString();
+                    while (city == null)
+                    {
+                        JObject jsonObject = JObject.Parse(geocodingData);
+                        city = jsonObject["results"][counter]["address_components"]
+                                             .FirstOrDefault(c => c["types"].Any(t => t.ToString() == "locality" || t.ToString() == "administrative_area_level_1"))?["long_name"]?.ToString();
+                        counter++;
+                    }
+                    
 
                     model.City = city;
                 }
