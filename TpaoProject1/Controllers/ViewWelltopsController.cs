@@ -50,7 +50,7 @@ namespace TpaoProject1.Controllers
                 double longi = double.Parse(model.Longitude);
                 string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
 
-                string geocodingData = await _geocodingService.GetGeocodingData(lati, longi, apiKey);
+                string geocodingData = await _geocodingService.GetGeocodingData(longi, lati, apiKey);
                 if (!string.IsNullOrEmpty(geocodingData))
                 {
                     while (city == null)
