@@ -8,7 +8,7 @@ using TpaoProject1.Model;
 
 namespace TpaoProject1.Controllers
 {
-    public class ViewWelltopsController : Controller
+    public class ViewWelltopsController : BaseController
     {
         private readonly DatabaseContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
