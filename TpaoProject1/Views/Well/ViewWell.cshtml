@@ -3,12 +3,8 @@
     ViewData["Title"] = "ViewWell";
 }
 <head>
+    <script src="//unpkg.com/icicle-chart"></script>
     <style>
-        .gradient-formation {
-            width: 300px; /* Adjust the width and height as needed */
-            height: 200px;
-            background: linear-gradient(to bottom, #ff0000, #00ff00); /* Adjust colors as needed */
-        }
 
         table.styledTable {
             border: 0px solid #000000;
@@ -17,31 +13,61 @@
             justify-content: center;
             align-content: center;
         }
+        .form-p{
+            margin: 0px 0px 0px ;
+        }
+        .form-td{
+            padding: 0px;
+            
+        }
 
-            table.styledTable td, table.styledTable th {
-                border: 0px solid #AAAAAA;
-                padding: 5px 5px;
-                text-align: center;
-            }
+        .formation-head-td{
+            margin-right: 10px;            
+        }
 
-            table.styledTable thead {
-                background: #B03610;
-                background: -moz-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
-                background: -webkit-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
-                background: linear-gradient(to bottom, #c4684c 0%, #b84a28 66%, #B03610 100%);
-                border-bottom: 3px solid #FFFFFF;
-                text-align: center;
-            }
+        table.styledTable th {
+            border: 0px solid #AAAAAA;
+            padding: 5px 5px;
+            text-align: center;
+        }
 
-                table.styledTable thead th {
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #FFFFFF;
-                    text-align: center;
-                }
+        table.styledTable thead {
+            background: #B03610;
+            background: -moz-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            background: -webkit-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            background: linear-gradient(to bottom, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            border-bottom: 3px solid #FFFFFF;
+            text-align: center;
+        }
+
+        table.styledTable thead th {
+            font-size: 16px;
+            font-weight: bold;
+            color: #E5E5E5;
+            text-align: center;
+            border-right: 3px dashed ;
+            border-left: 3px dashed;
+        }
+        .all{
+            display: flex;
+            justify-content: center;
+            margin 5px 5px 5px 5px;
+        }
+
+        .icon-location {
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .all a {
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   @* <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load("current", { packages: ["corechart"] });
         google.charts.setOnLoadCallback(drawChart);
@@ -85,7 +111,7 @@
             var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
-    </script>
+    </script>*@
 
 </head>
 <h1>ViewWell</h1>
@@ -115,10 +141,10 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Latitude</th>
-                <th scope="col">Longitude</th>
-                <th scope="col">Operation</th>
+                <th scope="col">Kuyu Adı</th>
+                <th scope="col">Enlem</th>
+                <th scope="col">Boylam</th>
+                <th scope="col">İşlem</th>
 
             </tr>
         </thead>
@@ -129,42 +155,12 @@
                 <td>@Model.well.Name</td>
                 <td>@Model.well.Latitude</td>
                 <td>@Model.well.Longitude</td>
-                <td><a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@Model.well.Id"> Delete </a></td>
                 <td><a asp-controller="Well" asp-action="AddFormation" asp-route-id="@Model.well.Id"> Add Formation </a></td>
             </tr>
         </tbody>
     </table>
-
     @if (Model.formation.Count() > 0)
     {
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th> Formation Type</th>
-                    <th> Formation Meter</th>
-                    <th scope="col">Operation</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                @foreach (var item in Model.formation)
-                {
-                    //int a = ınt16.parse(item.form_type)
-                    if (item.Form_type != null)
-                    {
-                        <tr>
-                            <td>@item.Form_type.ToString()</td>
-                            <td>-@item.Form_meter</td>
-                            <td><a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id"> Update </a></td>
-                            <td><a asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id"> Delete </a></td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-
-
         <div>
             @{
                 int?[] formation_meters = new int? [30];
@@ -172,19 +168,21 @@
                 <table class="styledTable">
                     <thead>
                         <tr>
-                            <td>
-                                Formasyon uzunluğu
-                            </td>
-                            <td>
+                            <th>
                                 Formasyon tipi
-                            </td>
-                            <td>
-                                Formasyon görüntüsü
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 Formasyon derinliği
-                            </td>
-
+                            </th>
+                            <th>
+                                Formasyon görüntüsü
+                            </th>
+                            <th>
+                                Formasyon uzunluğu
+                            </th>
+                            <th>
+                                İşlem
+                            </th>
                         </tr>
                     </thead>
                     @{
@@ -197,47 +195,89 @@
 
                         }
                     }
-
                     @foreach (var item in Model.formation)
                     {
                         var meter = item.Form_meter;
-
                         var formation_deep = formation_meters[count+1]-formation_meters[count];
                         string color = Model.color.Where(x => x.Key == item.Form_type).ToList().First().Value;
                         var color2 = color + "80";
-
                         <tbody>
                             <tr>
-                                <td>
-                                    <p>@item.Form_meter </p>
-                                </td>
-                                <td>
+                                <td class="form-td">
                                     <div>
-                                        <p>@item.Form_type</p>
+                                        <p class="form-p">@item.Form_type</p>
                                     </div>
-                                    @* //background: linear-gradient(to bottom, #ff0000, #00ff00)
-                    @*background-color:@Model.color.Where(x => x.Key==item.Form_type).ToList().First().Value*@
-
                                 </td>
-                                <td>
-                                    <p style=" height:@(formation_deep/ 8)px; background: linear-gradient(to bottom, @color, @color2  )">
+                                <td class="form-td">
+                                    <p class="form-p">@item.Form_meter </p>
+                                </td>
+                                <td class="form-td">
+                                    <p class="form-p"; style=" height:@(formation_deep/ 4)px; background: linear-gradient(to bottom, @color, @color2 )">
                                     </p>
                                 </td>
-                                <td>
-                                    <p>@formation_deep</p>
+                                <td class="form-td">
+                                    <p class="form-p">@formation_deep</p>
+                                </td>
+                                <td class="icon-location">
+                                    <div class="all">
+                                        <a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
+                                        <form asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
+                                            <a onclick="return functionConfirm(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
-
                         count++;
                     }
                 </table>
-
             }
-
-            <div id="chart_div" style="width: 900px; height: 500px;"></div>
-
         </div>
+
+         /* 
+        <div id="chart_div" style="width: 900px; height: 500px;"></div>
+          <div id="chart"></div>
+      <script>
+          const data = {
+              name: 'main',
+              color: 'magenta',
+              children: [{
+                  name: 'a',
+                  color: 'yellow',
+                  size: 1
+              }, {
+                  name: 'b',
+                  color: 'red',
+                  children: [{
+                      name: 'ba',
+                      color: 'orange',
+                      size: 1
+                  }, {
+                      name: 'bb',
+                      color: 'blue',
+                      children: [{
+                          name: 'bba',
+                          color: 'green',
+                          size: 1
+                      }, {
+                          name: 'bbb',
+                          color: 'pink',
+                          size: 1
+                      }]
+                  }]
+              }]
+          };
+
+          Icicle()
+              .orientation('td')
+              .data(data)
+              .size('size')
+              .color('color')
+              (document.getElementById('chart'));
+      </script>
+       */
     }
     else
     {
