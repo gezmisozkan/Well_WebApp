@@ -2,27 +2,34 @@
 @{
     ViewData["Title"] = "ViewWell";
 }
+
+<h1>ViewWell</h1>
+@model WellAndFormation
 <head>
-    <script src="//unpkg.com/icicle-chart"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
 
         table.styledTable {
             border: 0px solid #000000;
-            background-color: #E0E0E0;
+            background-color: #EFEFEF;
             text-align: center;
             justify-content: center;
             align-content: center;
-        }
-        .form-p{
-            margin: 0px 0px 0px ;
-        }
-        .form-td{
-            padding: 0px;
-            
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
         }
 
-        .formation-head-td{
-            margin-right: 10px;            
+        .form-p {
+            margin: 0px 0px 0px;
+        }
+
+        .form-td {
+            padding: 0px;
+        }
+
+        .formation-head-td {
+            margin-right: 10px;
         }
 
         table.styledTable th {
@@ -40,18 +47,18 @@
             text-align: center;
         }
 
-        table.styledTable thead th {
-            font-size: 16px;
-            font-weight: bold;
-            color: #E5E5E5;
-            text-align: center;
-            border-right: 3px dashed ;
-            border-left: 3px dashed;
-        }
-        .all{
+            table.styledTable thead th {
+                font-size: 16px;
+                font-weight: bold;
+                color: #E5E5E5;
+                text-align: center;
+                border-right: 3px dashed;
+                border-left: 3px dashed;
+            }
+
+        .all {
             display: flex;
             justify-content: center;
-            margin 5px 5px 5px 5px;
         }
 
         .icon-location {
@@ -63,225 +70,215 @@
 
         .all a {
             display: inline-block;
-            margin-right: 10px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+
+        .table-responsive {
+            margin: 30px 0;
+        }
+
+        .table-wrapper {
+            min-width: 1000px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .formasyon-container {
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .formasyon-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hint-text {
+            float: left;
+            margin-top: 6px;
+            font-size: 95%;
         }
     </style>
-
-   @* <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load("current", { packages: ["corechart"] });
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Dinosaur', 'Length'],
-                ['Acrocanthosaurus (top-spined lizard)', 12.2],
-                ['Albertosaurus (Alberta lizard)', 9.1],
-                ['Allosaurus (other lizard)', 12.2],
-                ['Apatosaurus (deceptive lizard)', 22.9],
-                ['Archaeopteryx (ancient wing)', 0.9],
-                ['Argentinosaurus (Argentina lizard)', 36.6],
-                ['Baryonyx (heavy claws)', 9.1],
-                ['Brachiosaurus (arm lizard)', 30.5],
-                ['Ceratosaurus (horned lizard)', 6.1],
-                ['Coelophysis (hollow form)', 2.7],
-                ['Compsognathus (elegant jaw)', 0.9],
-                ['Deinonychus (terrible claw)', 2.7],
-                ['Diplodocus (double beam)', 27.1],
-                ['Dromicelomimus (emu mimic)', 3.4],
-                ['Gallimimus (fowl mimic)', 5.5],
-                ['Mamenchisaurus (Mamenchi lizard)', 21.0],
-                ['Megalosaurus (big lizard)', 7.9],
-                ['Microvenator (small hunter)', 1.2],
-                ['Ornithomimus (bird mimic)', 4.6],
-                ['Oviraptor (egg robber)', 1.5],
-                ['Plateosaurus (flat lizard)', 7.9],
-                ['Sauronithoides (narrow-clawed lizard)', 2.0],
-                ['Seismosaurus (tremor lizard)', 45.7],
-                ['Spinosaurus (spiny lizard)', 12.2],
-                ['Supersaurus (super lizard)', 30.5],
-                ['Tyrannosaurus (tyrant lizard)', 15.2],
-                ['Ultrasaurus (ultra lizard)', 30.5],
-                ['Velociraptor (swift robber)', 1.8]]);
-
-            var options = {
-                title: 'Lengths of dinosaurs, in meters',
-                legend: { position: 'none' },
-            };
-
-            var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-    </script>*@
-
 </head>
-<h1>ViewWell</h1>
-@model WellAndFormation
+<body>
 
-@if (Model != null)
-{
-    @if (TempData["status"] != null)
+    @if (Model != null)
     {
-        if (TempData["status"].ToString() == "true")
+        @if (TempData["status"] != null)
         {
-            <div class="alert alert-secondary" role="alert">
-                Formasyon başarıyla eklendi
-            </div>
+            if (TempData["status"].ToString() == "true")
+            {
+                <div class="alert alert-secondary" role="alert">
+                    Formasyon başarıyla eklendi
+                </div>
+            }
         }
-    }
-    @if (TempData["Error"] != null)
-    {
-        if (TempData["Error"].ToString() == "successful")
+        @if (TempData["Error"] != null)
         {
-            <div class="alert alert-secondary" role="alert">
-                Formasyon başarıyla güncellendi
-            </div>
+            if (TempData["Error"].ToString() == "successful")
+            {
+                <div class="alert alert-secondary" role="alert">
+                    Formasyon başarıyla güncellendi
+                </div>
+            }
         }
-    }
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kuyu Adı</th>
-                <th scope="col">Enlem</th>
-                <th scope="col">Boylam</th>
-                <th scope="col">İşlem</th>
 
-            </tr>
-        </thead>
-        <tbody>
 
-            <tr>
-                <th scope="row">@Model.well.Id</th>
-                <td>@Model.well.Name</td>
-                <td>@Model.well.Latitude</td>
-                <td>@Model.well.Longitude</td>
-                <td><a asp-controller="Well" asp-action="AddFormation" asp-route-id="@Model.well.Id"> Add Formation </a></td>
-            </tr>
-        </tbody>
-    </table>
-    @if (Model.formation.Count() > 0)
-    {
-        <div>
-            @{
-                int?[] formation_meters = new int? [30];
-                int count = 0;
-                <table class="styledTable">
-                    <thead>
-                        <tr>
-                            <th>
-                                Formasyon tipi
-                            </th>
-                            <th>
-                                Formasyon derinliği
-                            </th>
-                            <th>
-                                Formasyon görüntüsü
-                            </th>
-                            <th>
-                                Formasyon uzunluğu
-                            </th>
-                            <th>
-                                İşlem
-                            </th>
-                        </tr>
-                    </thead>
-                    @{
-                        var formation_count = 1;
-                        formation_meters[0] = 0;
-                        @foreach (var item in Model.formation)
-                        {
-                            formation_meters[formation_count] = item.Form_meter;
-                            formation_count++;
+        <div class="container-xl">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Kuyu Adı</th>
+                                <th>Kuyu Tipi</th>
+                                <th>Enlem</th>
+                                <th>Boylam</th>
+                                <th>Formasyon Ekle</th>
 
-                        }
-                    }
-                    @foreach (var item in Model.formation)
-                    {
-                        var meter = item.Form_meter;
-                        var formation_deep = formation_meters[count+1]-formation_meters[count];
-                        string color = Model.color.Where(x => x.Key == item.Form_type).ToList().First().Value;
-                        var color2 = color + "80";
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td class="form-td">
-                                    <div>
-                                        <p class="form-p">@item.Form_type</p>
-                                    </div>
+
+                                <td>
+                                    <p class="fw-normal mb-1">@Model.well.Name</p>
+                                    <p class="text-muted mb-0">@Model.well.City</p>
                                 </td>
-                                <td class="form-td">
-                                    <p class="form-p">@item.Form_meter </p>
+                                <td>
+                                    @{
+                                        if (Model.well.WellTopType == "arama")
+                                        {
+                                            <span class="badge badge-primary rounded-pill d-inline">Arama</span>
+                                        }
+                                        else if (Model.well.WellTopType == "üretim")
+                                        {
+                                            <span class="badge badge-success rounded-pill d-inline">Üretim</span>
+                                        }
+                                        else if (Model.well.WellTopType == "tespit")
+                                        {
+                                            <span class="badge badge-info rounded-pill d-inline">Tespit</span>
+                                        }
+
+                                    }
+
                                 </td>
-                                <td class="form-td">
-                                    <p class="form-p"; style=" height:@(formation_deep/ 4)px; background: linear-gradient(to bottom, @color, @color2 )">
-                                    </p>
-                                </td>
-                                <td class="form-td">
-                                    <p class="form-p">@formation_deep</p>
-                                </td>
-                                <td class="icon-location">
-                                    <div class="all">
-                                        <a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
-                                        <form asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
-                                            <a onclick="return functionConfirm(this)">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </form>
-                                    </div>
+                                <td>@Model.well.Latitude</td>
+                                <td>@Model.well.Longitude</td>
+                                <td>
+                                    <a asp-controller="Well" asp-action="AddFormation" asp-route-id="@Model.well.Id" class="view" title="Formasyon Ekle" data-toggle="tooltip"> <i class="fa-solid fa-plus"></i> </a>
                                 </td>
                             </tr>
+
                         </tbody>
-                        count++;
-                    }
-                </table>
-            }
+                    </table>
+                </div>
+            </div>
         </div>
 
-         /* 
-        <div id="chart_div" style="width: 900px; height: 500px;"></div>
-          <div id="chart"></div>
-      <script>
-          const data = {
-              name: 'main',
-              color: 'magenta',
-              children: [{
-                  name: 'a',
-                  color: 'yellow',
-                  size: 1
-              }, {
-                  name: 'b',
-                  color: 'red',
-                  children: [{
-                      name: 'ba',
-                      color: 'orange',
-                      size: 1
-                  }, {
-                      name: 'bb',
-                      color: 'blue',
-                      children: [{
-                          name: 'bba',
-                          color: 'green',
-                          size: 1
-                      }, {
-                          name: 'bbb',
-                          color: 'pink',
-                          size: 1
-                      }]
-                  }]
-              }]
-          };
+        @if (Model.formation.Count() > 0)
+        {
+            <div class="formasyon-container-xl">
 
-          Icicle()
-              .orientation('td')
-              .data(data)
-              .size('size')
-              .color('color')
-              (document.getElementById('chart'));
-      </script>
-       */
-    }
-    else
-    {
-        <div>Gösterilecek formasyon bulunmamaktadır</div>
-    }
+                <div class="row justify-content-center">
 
-}
+                    <div class="formasyon-table-responsive">
+
+                        <div class="formasyon-table-wrapper">
+
+                            <div>
+                                @{
+                                    int?[] formation_meters = new int?[30];
+                                    int count = 0;
+                                    <table class="styledTable table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Formasyon tipi
+                                                </th>
+                                                <th>
+                                                    Formasyon derinliği
+                                                </th>
+                                                <th>
+                                                    Formasyon görüntüsü
+                                                </th>
+                                                <th>
+                                                    Formasyon uzunluğu
+                                                </th>
+                                                <th>
+                                                    İşlem
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        @{
+                                            var formation_count = 1;
+                                            formation_meters[0] = 0;
+                                            @foreach (var item in Model.formation)
+                                            {
+                                                formation_meters[formation_count] = item.Form_meter;
+                                                formation_count++;
+
+                                            }
+                                        }
+                                        @foreach (var item in Model.formation)
+                                        {
+                                            var meter = item.Form_meter;
+                                            var formation_deep = formation_meters[count + 1] - formation_meters[count];
+                                            string color = Model.color.Where(x => x.Key == item.Form_type).ToList().First().Value;
+                                            var color2 = color + "80";
+                                            <tbody>
+                                                <tr>
+                                                    <td class="form-td">
+                                                        <div>
+                                                            <p class="form-p">@item.Form_type</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p">@item.Form_meter </p>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p" ; style=" height:@(formation_deep/ 4)px; background: linear-gradient(to bottom, @color, @color2 )">
+                                                        </p>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p">@formation_deep</p>
+                                                    </td>
+                                                    <td class="icon-location ">
+                                                        <div class="all">
+                                                            <a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
+                                                            <form asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
+                                                                <a onclick="return functionConfirm(this)">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </a>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            count++;
+                                        }
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>Gösterilecek formasyon bulunmamaktadır</div>
+        }
+
+    }
+</body>
