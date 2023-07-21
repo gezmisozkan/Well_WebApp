@@ -2,102 +2,283 @@
 @{
     ViewData["Title"] = "ViewWell";
 }
+
+<h1>ViewWell</h1>
+@model WellAndFormation
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
-        .gradient-formation {
-            width: 300px; /* Adjust the width and height as needed */
-            height: 200px;
-            background: linear-gradient(to bottom, #ff0000, #00ff00); /* Adjust colors as needed */
+
+        table.styledTable {
+            border: 0px solid #000000;
+            background-color: #EFEFEF;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .form-p {
+            margin: 0px 0px 0px;
+        }
+
+        .form-td {
+            padding: 0px;
+        }
+
+        .formation-head-td {
+            margin-right: 10px;
+        }
+
+        table.styledTable th {
+            border: 0px solid #AAAAAA;
+            padding: 5px 5px;
+            text-align: center;
+        }
+
+        table.styledTable thead {
+            background: #B03610;
+            background: -moz-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            background: -webkit-linear-gradient(top, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            background: linear-gradient(to bottom, #c4684c 0%, #b84a28 66%, #B03610 100%);
+            border-bottom: 3px solid #FFFFFF;
+            text-align: center;
+        }
+
+            table.styledTable thead th {
+                font-size: 16px;
+                font-weight: bold;
+                color: #E5E5E5;
+                text-align: center;
+                border-right: 3px dashed;
+                border-left: 3px dashed;
+            }
+
+        .all {
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon-location {
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .all a {
+            display: inline-block;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+
+        .table-responsive {
+            margin: 30px 0;
+        }
+
+        .table-wrapper {
+            min-width: 1000px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .formasyon-container {
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .formasyon-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hint-text {
+            float: left;
+            margin-top: 6px;
+            font-size: 95%;
         }
     </style>
 </head>
-<h1>ViewWell</h1>
-@model WellAndFormation
+<body>
 
-@if (Model != null)
-{
-    @if (TempData["status"] != null)
+    @if (Model != null)
     {
-        if (TempData["status"].ToString() == "true")
+        @if (TempData["status"] != null)
         {
-            <div class="alert alert-secondary" role="alert">
-                Formasyon başarıyla eklendi
-            </div>
-        }
-    }
-    @if (TempData["Error"] != null)
-    {
-        if (TempData["Error"].ToString() == "successful")
-        {
-            <div class="alert alert-secondary" role="alert">
-                Formasyon başarıyla güncellendi
-            </div>
-        }
-    }
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Latitude</th>
-                <th scope="col">Longitude</th>
-                <th scope="col">Operation</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-                <th scope="row">@Model.well.Id</th>
-                <td>@Model.well.Name</td>
-                <td>@Model.well.Latitude</td>
-                <td>@Model.well.Longitude</td>
-                <td><a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@Model.well.Id"> Delete </a></td>
-                <td><a asp-controller="Well" asp-action="AddFormation" asp-route-id="@Model.well.Id"> Add Formation </a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    @if (Model.formation.Count() > 0)
-    {
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th> Formation Type</th>
-                    <th> Formation Meter</th>
-                    <th scope="col">Operation</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                @foreach (var item in Model.formation)
-                {
-                    //int a = Int16.Parse(item.Form_type)
-                    if (item.Form_type != null)
-                    {
-                        <tr>
-                            <td>@item.Form_type.ToString()</td>
-                            <td>-@item.Form_meter</td>
-                            <td><a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id"> Update </a></td>
-                            <td><a asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id"> Delete </a></td>
-                        </tr>
-                    }
-                }
-
-            </tbody>
-
-        </table>
-        <div class="gradient-formation">
-            @foreach (var item in Model.formation)
+            if (TempData["status"].ToString() == "true")
             {
-                <div style="width:50px; height:30px; background-color:#0000ff ">  </div>
+                <div class="alert alert-success" role="alert">
+                    Formasyon başarıyla eklendi
+                </div>
             }
-        </div>
-    }
-    else
-    {
-        <div>Gösterilecek formasyon bulunmamaktadır</div>
-    }
+        }
+        @if (TempData["Error"] != null)
+        {
+            if (TempData["Error"].ToString() == "successful")
+            {
+                <div class="alert alert-success" role="alert">
+                    Formasyon başarıyla güncellendi
+                </div>
+            }
+        }
 
-}
+
+        <div class="container-xl">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Kuyu Adı</th>
+                                <th>Kuyu Tipi</th>
+                                <th>Enlem</th>
+                                <th>Boylam</th>
+                                <th>Formasyon Ekle</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    <p class="fw-normal mb-1">@Model.well.Name</p>
+                                    <p class="text-muted mb-0">@Model.well.City</p>
+                                </td>
+                                <td>
+                                    @{
+                                        if (Model.well.WellTopType == "arama")
+                                        {
+                                            <span class="badge badge-primary rounded-pill d-inline">Arama</span>
+                                        }
+                                        else if (Model.well.WellTopType == "üretim")
+                                        {
+                                            <span class="badge badge-success rounded-pill d-inline">Üretim</span>
+                                        }
+                                        else if (Model.well.WellTopType == "tespit")
+                                        {
+                                            <span class="badge badge-info rounded-pill d-inline">Tespit</span>
+                                        }
+
+                                    }
+
+                                </td>
+                                <td>@Model.well.Latitude</td>
+                                <td>@Model.well.Longitude</td>
+                                <td>
+                                    <a asp-controller="Well" asp-action="AddFormation" asp-route-id="@Model.well.Id" class="view" title="Formasyon Ekle" data-toggle="tooltip"> <i class="fa-solid fa-plus"></i> </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.formation.Count() > 0)
+        {
+            <div class="formasyon-container-xl">
+
+                <div class="row justify-content-center">
+
+                    <div class="formasyon-table-responsive">
+
+                        <div class="formasyon-table-wrapper">
+
+                            <div>
+                                @{
+                                    int?[] formation_meters = new int?[30];
+                                    int count = 0;
+                                    <table class="styledTable table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Formasyon tipi
+                                                </th>
+                                                <th>
+                                                    Formasyon derinliği
+                                                </th>
+                                                <th>
+                                                    Formasyon görüntüsü
+                                                </th>
+                                                <th>
+                                                    Formasyon uzunluğu
+                                                </th>
+                                                <th>
+                                                    İşlem
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        @{
+                                            var formation_count = 1;
+                                            formation_meters[0] = 0;
+                                            @foreach (var item in Model.formation)
+                                            {
+                                                formation_meters[formation_count] = item.Form_meter;
+                                                formation_count++;
+
+                                            }
+                                        }
+                                        @foreach (var item in Model.formation)
+                                        {
+                                            var meter = item.Form_meter;
+                                            var formation_deep = formation_meters[count + 1] - formation_meters[count];
+                                            string color = Model.color.Where(x => x.Key == item.Form_type).ToList().First().Value;
+                                            var color2 = color + "80";
+                                            <tbody>
+                                                <tr>
+                                                    <td class="form-td">
+                                                        <div>
+                                                            <p class="form-p">@item.Form_type</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p">@item.Form_meter </p>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p" ; style=" height:@(formation_deep/ 4)px; background: linear-gradient(to bottom, @color, @color2 )">
+                                                        </p>
+                                                    </td>
+                                                    <td class="form-td">
+                                                        <p class="form-p">@formation_deep</p>
+                                                    </td>
+                                                    <td class="icon-location ">
+                                                        <div class="all">
+                                                            <a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
+                                                            <form asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
+                                                                <a onclick="return functionConfirm(this)">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </a>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            count++;
+                                        }
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>Gösterilecek formasyon bulunmamaktadır</div>
+        }
+
+    }
+</body>

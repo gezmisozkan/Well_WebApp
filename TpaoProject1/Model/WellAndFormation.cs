@@ -6,5 +6,6 @@
 
         public List<Formation>? formation { get; set; }
 
+        public Dictionary<string, string> color { get; set; }
     }
 }
