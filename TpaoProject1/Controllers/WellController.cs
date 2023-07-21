@@ -10,6 +10,15 @@ namespace TpaoProject1.Controllers
 {
     public class WellController : Controller
     {
+        public Dictionary<string, string> Color = new Dictionary<string, string>()
+        {
+            {"A","#F4A900" },{"B","#E6D690" },{"C","#316650" },{"D","#633A34" },{"E","#D95030" },{"F","#A5A5A5" },
+            {"G","#412227" },{"H","#20214F" },{"I","#EC7C26" },{"J","#924E7D" },{"K","#2D572C" },{"L","#EDFF21" },
+            {"M","#F5D033" },{"N","#587246" },{"O","#9DA1AA" },{"P","#646B63" },{"Q","#826C34" },{"R","#5E2129" },
+            {"S","#2F353B" },{"T","#F4A900" },{"U","#3B3C36" },{"V","#8B8C7A" },{"W","#1C1C1C" },{"X","#6C6960" },
+            {"Y","#eb34c6" },{"Z","#541447" }
+        };
+
         private readonly DatabaseContext _context;
         public WellController(DatabaseContext context)
         {
@@ -28,7 +37,8 @@ namespace TpaoProject1.Controllers
             var all = new WellAndFormation()
             {
                 formation = formation,
-                well = well
+                well = well,
+                color = Color
             };
             return View(all);
         }
@@ -76,7 +86,8 @@ namespace TpaoProject1.Controllers
                 var all = new WellAndFormation()
                 {
                     formation = Formation,
-                    well = Well
+                    well = Well,
+                    color = Color
                 };
                 TempData["status"] = "true";
                 return View("ViewWell", all);
@@ -137,7 +148,8 @@ namespace TpaoProject1.Controllers
                 var all = new WellAndFormation()
                 {
                     formation = _context.Formation.Where(x => x.wellid == formation.wellid).ToList(),
-                    well = _context.WellTops.Find(formation.wellid)
+                    well = _context.WellTops.Find(formation.wellid),
+                    color = Color
 
                 };
                 return View("ViewWell", all);
@@ -149,9 +161,16 @@ namespace TpaoProject1.Controllers
         }
         public IActionResult RemoveFormation(int id)
         {
-            _context.Remove(_context.Formation.Find(id));
+            var formation = _context.Formation.Find(id);
+            _context.Remove(formation);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            var all = new WellAndFormation()
+            {
+                formation = _context.Formation.Where(x => x.wellid == formation.wellid).ToList(),
+                well = _context.WellTops.Find(formation.wellid),
+                color = Color
+            };
+            return View("ViewWell", all);
         }
     }
 }
