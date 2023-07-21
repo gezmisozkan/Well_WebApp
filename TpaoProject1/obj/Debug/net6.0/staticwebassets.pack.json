@@ -5,35 +5,11 @@
       "PackagePath": "staticwebassets\\TpaoProject1.bundle.scp.css"
     },
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\a.png",
-      "PackagePath": "staticwebassets\\css\\a.png"
-    },
-    {
-      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\empty_state.png",
-      "PackagePath": "staticwebassets\\css\\empty_state.png"
-    },
-    {
-      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\matcha-latte.png",
-      "PackagePath": "staticwebassets\\css\\matcha-latte.png"
-    },
-    {
-      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\site.css",
-=======
       "Id": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\wwwroot\\css\\empty_state.png",
       "PackagePath": "staticwebassets\\css\\empty_state.png"
     },
     {
       "Id": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\wwwroot\\css\\site.css",
->>>>>>> b17286fcd2b96ef72b112c2a0f968be114cf54f2
-=======
-      "Id": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\wwwroot\\css\\empty_state.png",
-      "PackagePath": "staticwebassets\\css\\empty_state.png"
-    },
-    {
-      "Id": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\wwwroot\\css\\site.css",
->>>>>>> b17286fcd2b96ef72b112c2a0f968be114cf54f2
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
