@@ -8,6 +8,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net;
+using System.Net.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DatabaseContextConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseContextConnection' not found.");
@@ -25,9 +29,14 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.DefaultRequestCulture = new RequestCulture("en-US"); // �stedi�iniz dil ve b�lgeyi burada belirtebilirsiniz
 });
 
-builder.Services.AddDefaultIdentity<ApplicationUser>().AddDefaultTokenProviders()
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<DatabaseContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+    // Other options you might have
+    options.SignIn.RequireConfirmedAccount = true;
+})
+.AddDefaultTokenProviders()
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<DatabaseContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -41,6 +50,21 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddHttpClient<MapsGeocodingService>();
 
+builder.Services.AddAuthentication(); // If not already added
+builder.Services.AddAuthorization(); // If not already added
+
+// Add email sender service using Gmail SMTP
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+// Configure the email sender options (Gmail example)
+builder.Services.Configure<EmailSenderOptions>(options =>
+{
+    options.Host = "smtp.gmail.com";
+    options.Port = 587;
+    options.EnableSsl = true;
+    options.UserName = "melisayuncu.my@gmail.com"; // Replace with your Gmail email
+    options.Password = "echt llaq dovv whrk"; // Replace with your Gmail application password
+});
 
 //builder.Services.ConfigureDbContext(builder.Configuration);
 var app = builder.Build();
@@ -66,6 +90,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+
 
 
 

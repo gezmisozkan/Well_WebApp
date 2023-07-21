@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/Zm6Sq2t51BJRAx0JNf2Cbenk5vbszIv9hKsECqq9bA=",
+  "Hash": "TAKgOKuTh/iu/Iwp6Xv6E9DNH6xuyvwUfEcjEw0FQps=",
   "Source": "TpaoProject1",
   "BasePath": "_content/TpaoProject1",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TpaoProject1.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\a.png",
+      "SourceId": "TpaoProject1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\",
+      "BasePath": "_content/TpaoProject1",
+      "RelativePath": "css/a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\a.png"
+    },
+    {
       "Identity": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\empty_state.png",
       "SourceId": "TpaoProject1",
       "SourceType": "Discovered",
@@ -1086,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\empty_state.png"
+    },
+    {
+      "Identity": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\matcha-latte.png",
+      "SourceId": "TpaoProject1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\",
+      "BasePath": "_content/TpaoProject1",
+      "RelativePath": "css/matcha-latte.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\matcha-latte.png"
     },
     {
       "Identity": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\site.css",

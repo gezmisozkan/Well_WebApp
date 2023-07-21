@@ -157,9 +157,21 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
-                  
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    string templatePath = "./Views/EmailTemplate.cshtml";
+                    string htmlMessage;
+
+                    using (var reader = new StreamReader(templatePath))
+                    {
+                        htmlMessage = await reader.ReadToEndAsync();
+                    }
+
+                    // Onaylama baðlantýsýný HTML þablonunda ilgili yere entegre ediyoruz.
+                    htmlMessage = htmlMessage.Replace("{{ConfirmationLink}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                    // Email'i gönderme iþlemini gerçekleþtiriyoruz.
+                    var subject = "Confirm your email";
+                    await _emailSender.SendEmailAsync(Input.Email, subject, htmlMessage);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets\\TpaoProject1.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\a.png",
+      "PackagePath": "staticwebassets\\css\\a.png"
+    },
+    {
       "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\empty_state.png",
       "PackagePath": "staticwebassets\\css\\empty_state.png"
+    },
+    {
+      "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\matcha-latte.png",
+      "PackagePath": "staticwebassets\\css\\matcha-latte.png"
     },
     {
       "Id": "C:\\Users\\emre_\\OneDrive\\Masaüstü\\kjcxhcfdsj\\TpaoProject1\\wwwroot\\css\\site.css",

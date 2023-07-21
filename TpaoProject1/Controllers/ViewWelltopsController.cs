@@ -160,7 +160,7 @@ namespace TpaoProject1.Controllers
             return View(viewModel);
         }
 
-
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             DeleteNotification("Silinen Kuyu Geri Getirilmez!", NotificationType.Warning, "Emin Misiniz?");
