@@ -7,19 +7,32 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TpaoProject1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.min.css" asp-append-version="true" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
 
+        footer {
+            align-self: flex-end;
+        }
+        
+    </style>
 </head>
 <body>
    <partial name="_NavbarPartialView" />
+
     <div class="container">
-        <main role="main">
+        <script src="~/lib/limonte-sweetalert2/sweetalert2.min.js" asp-append-version="true"></script>
+        <main>
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container ">
+    <footer class="border-top footer text-muted" >
+        <div class="container-fluid" >
             &copy; 2023 -  Türkiye Petrolleri Anonim Ortaklığı<a asp-area="" asp-controller="Home"></a>
         </div>
     </footer>
