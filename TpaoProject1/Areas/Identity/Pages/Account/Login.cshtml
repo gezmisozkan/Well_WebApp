@@ -1,0 +1,149 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    // Layout = "~/Areas/Identity/Pages/_AppLayout.cshtml";
+}
+<head>
+    <style>
+        .FlexContainer {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: baseline;
+            background-color: #edede9;
+            height: 80vh;
+            width: 80vh;
+            overflow: auto;
+            flex-direction: row;
+            margin-left: 50vh;
+        }
+
+        .attribute a {
+            display: flex;
+            border-radius: 8px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: baseline;
+            background: #4c956c;
+            color: #fff;
+            padding: 5px 10px;
+            overflow: auto;
+            text-decoration: none;
+        }
+
+        .form-control {
+            margin-top: 10px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .content-center {
+            width: 100%;
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 420px;
+            min-width: 320px;
+            margin: auto;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-system {
+            color: #ed1c25 !important;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #ed1c25;
+            border-color: #ed1c25;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #000000;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            background-color: #ced4da;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+    </style>
+</head>
+
+<div class="container-fluid full-height">
+    <div class="row row-height">
+        <div class="col-lg-12">
+            <div class="content-center">
+                <div class="content-box">
+                    <div class="text-center">
+                        <a href="/" title="Türkiye Petrolleri Anonim Ortaklığı">
+                            <img src="https://bnastatic.blob.core.windows.net/odemetpaogovtr/img-firmlogo-65707" class="mb-2" title="Türkiye Petrolleri Anonim Ortaklığı" alt="Türkiye Petrolleri Anonim Ortaklığı" style="max-height: 70px;">
+                        </a>
+                    </div>
+                    <div id="notify">
+                    </div>
+                    <div class="border p-4 rounded">
+                        <form id="account" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-label-group">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Mail adresiniz" style="background-color: #E1ECF0" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-1">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Şifreniz" style="background-color: #E1ECF0" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme" value="remember-me">
+                                    <label class="custom-control-label" for="rememberme">Beni Hatırla</label>
+                                </div>
+                                <div><a asp-controller="User" asp-action="ResetPassword" class="text-system">Şifremi Unuttum?</a><div class="gaps-2x"></div></div>
+                            </div>
+                            <button id="login-submit" type="submit" class="btn btn-primary btn-block" type="submit">Giriş</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="content-center text-center">
+                    <a class="text-system" asp-page="./Register">Hesabınız yok mu?</a><div class="gaps-2x"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

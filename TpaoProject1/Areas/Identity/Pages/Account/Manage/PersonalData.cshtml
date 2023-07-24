@@ -1,0 +1,30 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center mt-3">
+        <h2 style="text-align: center;">Kişisel Bilgiler</h2>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <p>Hesabınızda kişisel verileriniz bulunmaktadır. Buradan bütün verilerinizi silebilirsiniz.</p>
+        <p>
+            <strong>Bu verileri silmek hesabınızın da silinmesine neden olacaktır. Bu işlemi geri alamazsınız.</strong>
+        </p>
+
+        <p>
+
+            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Hesabımı Sil</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
