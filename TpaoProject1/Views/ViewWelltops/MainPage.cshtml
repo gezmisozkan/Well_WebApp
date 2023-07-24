@@ -287,6 +287,7 @@
 
         .all a {
             display: inline-block; /* İkona blok düzeyinde yer ayırmak için inline-block kullanın */
+            color: red;
             margin-right: 10px; /* İkonlar arasında boşluk bırakmak isterseniz */
         }
 
@@ -417,8 +418,8 @@
                                             <a asp-controller="Well" asp-action="ViewWell" asp-route-id="@wells.Id" class="view" title="Detayları Görüntüle"><i class="fa fa-eye"></i></a>
                                             <a asp-controller="ViewWelltops" asp-action="Update" asp-route-id="@wells.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
                                            
-                                                <a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@wells.Id" title="Kaydı Sil" onclick="return functionConfirm(this)">
-                                                <i style="color: red" class="fas fa-trash"></i>
+                                                <a asp-controller="ViewWelltops" asp-action="Delete" asp-route-id="@wells.Id" title="Kaydı Sil">
+                                                    <i style="color:red" class="fas fa-trash"></i>
                                                 </a>
                                            
                                         </div>

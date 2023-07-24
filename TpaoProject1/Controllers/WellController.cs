@@ -46,12 +46,13 @@ namespace TpaoProject1.Controllers
         public IActionResult AddFormation(int id)
         {
             var well = _context.WellTops.Find(id);
-
+                     
             return View(well);
         }
+
         [HttpPost]
         [ActionName("AddFormation")]
-        public IActionResult AddFormation(WellTop well, string Form_type, int Form_meter)
+        public async Task<IActionResult> AddFormation(WellTop well, string Form_type, int Form_meter)
         {
             var id = well.Id;
 

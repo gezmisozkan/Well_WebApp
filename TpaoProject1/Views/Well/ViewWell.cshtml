@@ -3,7 +3,6 @@
     ViewData["Title"] = "ViewWell";
 }
 
-<h1>ViewWell</h1>
 @model WellAndFormation
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -256,11 +255,10 @@
                                                     <td class="icon-location ">
                                                         <div class="all">
                                                             <a asp-controller="Well" asp-action="UpdateFormation" asp-route-id="@item.Id" class="edit" title="Düzenle"><i class="fa fa-pencil"></i></a>
-                                                            <form asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
-                                                                <a onclick="return functionConfirm(this)">
+                                                                <a asp-controller="Well" asp-action="RemoveFormation" asp-route-id="@item.Id" title="Kaydı Sil">
                                                                     <i class="fas fa-trash"></i>
                                                                 </a>
-                                                            </form>
+                                                            
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -89,11 +89,11 @@ namespace TpaoProject1.Controllers
                     var longitude = welltop.Longitude;
                     var latitude = welltop.Latitude;
 
-                    if (!IsNameExists(name) && !IsLocationExists(longitude, latitude))
+                    if (!IsLocationExists(longitude, latitude))
                     {
                         _dbContext.WellTops.Add(welltop);
                     }
-                    else
+                    else 
                     {
                         BasicNotification("Koordinatlarınızı tekrar giriniz...", NotificationType.Error, "Seçtiğiniz koordinatlarda kuyu bulunmaktadır");
                         return View();
@@ -107,9 +107,6 @@ namespace TpaoProject1.Controllers
 
                     BasicNotification("Koordinatlarınızı kontrol ediniz..", NotificationType.Question, "Türk deniz sahasını aştınız!");
                 }
-
-
-
 
                 return RedirectToAction("MainPage", "ViewWelltops");
             }
@@ -160,7 +157,7 @@ namespace TpaoProject1.Controllers
             return View(viewModel);
         }
 
-        [HttpDelete]
+       
         public async Task<IActionResult> Delete(int id)
         {
             DeleteNotification("Silinen Kuyu Geri Getirilmez!", NotificationType.Warning, "Emin Misiniz?");
@@ -222,9 +219,19 @@ namespace TpaoProject1.Controllers
             return RedirectToAction("MainPage", "ViewWelltops");
 
         }
-
-
-
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult HasWellName(string name)
+        {
+            var anyName = _dbContext.WellTops.Any(x => x.Name == name);
+            if (anyName)
+            {
+                return Json("Bu isimde bir kuyu zaten mevcut");
+            }
+            else
+            {
+                return Json(true);
+            }
+        }
 
 
 
