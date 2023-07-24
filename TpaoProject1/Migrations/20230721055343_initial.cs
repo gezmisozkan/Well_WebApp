@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TpaoProject1.Migrations
 {
     /// <inheritdoc />
-    public partial class db : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,19 +55,18 @@ namespace TpaoProject1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Game",
+                name: "Formation",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GuessNumber = table.Column<int>(type: "int", nullable: false),
-                    RememberNumber = table.Column<int>(type: "int", nullable: false),
-                    Success = table.Column<int>(type: "int", nullable: false),
-                    Difference = table.Column<int>(type: "int", nullable: false)
+                    wellid = table.Column<int>(type: "int", nullable: false),
+                    Form_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Form_meter = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Game", x => x.Id);
+                    table.PrimaryKey("PK_Formation", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,6 +200,25 @@ namespace TpaoProject1.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "02174cf0–9412–4cfe-afbf-59f706d72cf6", "02174cf0–9412–4cfe-afbf-59f706d72cf6", "User", "USER" },
+                    { "341743f0-asd2–42de-afbf-59kmkkmk72cf6", "341743f0-asd2–42de-afbf-59kmkkmk72cf6", "Admin", "ADMIN" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "66885b36-87ad-4732-abbd-73b8b76f7939", "admin@admin.com", true, "admin", "admin", false, null, null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEKRy5J72ABoL/Q03cX0bh0SUZTY2tP2yH/I9T89J080XatDeziI+z8tE01NAjW96Ow==", null, false, "4b252383-825a-46d3-93d4-0d6e4ee8d62e", false, "admin@admin.com" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "341743f0-asd2–42de-afbf-59kmkkmk72cf6", "02174cf0–9412–4cfe-afbf-59f706d72cf6" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -263,7 +283,7 @@ namespace TpaoProject1.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Game");
+                name: "Formation");
 
             migrationBuilder.DropTable(
                 name: "WellTops");

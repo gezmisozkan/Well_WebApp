@@ -11710,19 +11710,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Büşranur\\.nuget\\packages\\": {}
+    "C:\\Users\\gezmi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj",
+      "projectUniqueName": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\TpaoProject1.csproj",
       "projectName": "TpaoProject1",
-      "projectPath": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj",
-      "packagesPath": "C:\\Users\\Büşranur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\obj\\",
+      "projectPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\TpaoProject1.csproj",
+      "packagesPath": "C:\\Users\\gezmi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gezmi\\OneDrive\\Masaüstü\\TPAO_Project\\TPAO-last-dev-test\\TpaoProject1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Büşranur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gezmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11730,7 +11730,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11791,24 +11791,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.20, 6.0.20]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.20, 6.0.20]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.20, 6.0.20]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.20, 6.0.20]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -11817,7 +11799,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

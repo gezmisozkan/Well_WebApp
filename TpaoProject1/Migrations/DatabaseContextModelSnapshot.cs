@@ -259,16 +259,16 @@ namespace TpaoProject1.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "be6cd5e2-b3f7-4234-bcd7-60a790e1e968",
+                            ConcurrencyStamp = "66885b36-87ad-4732-abbd-73b8b76f7939",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
                             LastName = "admin",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG8M/Rvog57jsgcxGZKp16h62p28GjwFMSojA7VOttcOSyG5TiKdzRbz7KpUvmDrwQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKRy5J72ABoL/Q03cX0bh0SUZTY2tP2yH/I9T89J080XatDeziI+z8tE01NAjW96Ow==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "667aa0df-d4a0-422e-95af-00ddbab8ac1c",
+                            SecurityStamp = "4b252383-825a-46d3-93d4-0d6e4ee8d62e",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });
