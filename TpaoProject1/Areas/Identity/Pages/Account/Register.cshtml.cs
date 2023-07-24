@@ -1,4 +1,4 @@
-ï»¿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
@@ -30,13 +30,15 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +46,7 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
        
@@ -111,7 +114,7 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-
+            public string? Role { get; set; }
            
         }
 
@@ -143,8 +146,8 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    
 
+                    await _userManager.AddToRoleAsync(user, "User");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -154,9 +157,21 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
-                  
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    string templatePath = "./Views/EmailTemplate.cshtml";
+                    string htmlMessage;
+
+                    using (var reader = new StreamReader(templatePath))
+                    {
+                        htmlMessage = await reader.ReadToEndAsync();
+                    }
+
+                    // Onaylama baðlantýsýný HTML þablonunda ilgili yere entegre ediyoruz.
+                    htmlMessage = htmlMessage.Replace("{{ConfirmationLink}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                    // Email'i gönderme iþlemini gerçekleþtiriyoruz.
+                    var subject = "Confirm your email";
+                    await _emailSender.SendEmailAsync(Input.Email, subject, htmlMessage);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

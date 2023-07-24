@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using TpaoProject1.Areas.Identity.Data;
+using System.IO;
+
 
 namespace TpaoProject1.Areas.Identity.Pages.Account.Manage
 {
@@ -124,10 +126,12 @@ namespace TpaoProject1.Areas.Identity.Pages.Account.Manage
                     pageHandler: null,
                     values: new { area = "Identity", userId = userId, email = Input.NewEmail, code = code },
                     protocol: Request.Scheme);
-                await _emailSender.SendEmailAsync(
-                    Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                // Instead of using _emailSender.SendEmailAsync(), you can send the email using your preferred method.
+                // For example, using the EmailSenderOptions and SmtpClient as mentioned earlier:
+                var subject = "Confirm your email change";
+                var htmlMessage = $"Please confirm your email change by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.";
+                await _emailSender.SendEmailAsync(Input.NewEmail, subject, htmlMessage);
 
                 StatusMessage = "Confirmation link to change email sent. Please check your email.";
                 return RedirectToPage();
@@ -136,6 +140,8 @@ namespace TpaoProject1.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Your email is unchanged.";
             return RedirectToPage();
         }
+
+
 
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
         {
@@ -160,13 +166,26 @@ namespace TpaoProject1.Areas.Identity.Pages.Account.Manage
                 pageHandler: null,
                 values: new { area = "Identity", userId = userId, code = code },
                 protocol: Request.Scheme);
-            await _emailSender.SendEmailAsync(
-                email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+            // E-posta şablon dosyasını okuyoruz.
+            string templatePath = "EmailTemplate.cshtml";
+            string htmlMessage;
+
+            using (var reader = new StreamReader(templatePath))
+            {
+                htmlMessage = await reader.ReadToEndAsync();
+            }
+
+            // Onaylama bağlantısını HTML şablonunda ilgili yere entegre ediyoruz.
+            htmlMessage = htmlMessage.Replace("{{ConfirmationLink}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+            // Email'i gönderme işlemini gerçekleştiriyoruz.
+            var subject = "Confirm your email";
+            await _emailSender.SendEmailAsync(email, subject, htmlMessage);
 
             StatusMessage = "Verification email sent. Please check your email.";
             return RedirectToPage();
         }
+
     }
 }

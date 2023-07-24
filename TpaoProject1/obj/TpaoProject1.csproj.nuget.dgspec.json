@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Büşranur\\Desktop\\Restriction\\TpaoProject1\\TpaoProject1.csproj": {}
+    "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Büşranur\\Desktop\\Restriction\\TpaoProject1\\TpaoProject1.csproj": {
+    "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Büşranur\\Desktop\\Restriction\\TpaoProject1\\TpaoProject1.csproj",
+        "projectUniqueName": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj",
         "projectName": "TpaoProject1",
-        "projectPath": "C:\\Users\\Büşranur\\Desktop\\Restriction\\TpaoProject1\\TpaoProject1.csproj",
+        "projectPath": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\TpaoProject1.csproj",
         "packagesPath": "C:\\Users\\Büşranur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Büşranur\\Desktop\\Restriction\\TpaoProject1\\obj\\",
+        "outputPath": "C:\\Users\\Büşranur\\Desktop\\Tpao-Dev-Test 21.07\\TpaoProject1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Büşranur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,11 +43,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.18, )"
+              "version": "[6.0.20, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[6.0.18, )"
+              "version": "[6.0.20, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
