@@ -4,7 +4,7 @@
 }
 @model WellTop
 <html>
-    <div>
+    
     <head>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -76,10 +76,14 @@
                 padding: 16px 8px 8px 8px;
                 font-size:20px;
                 text-align: center;
+             }
+            .alert {
+                margin-top: 20px;
             }
         </style>
     </head>
    
+    <body>
     @if (TempData["status"] != null)
     {
         if (TempData["status"].ToString() == "same_formation")
@@ -102,14 +106,14 @@
         }
     }
     <form asp-controller="Well" asp-action="AddFormation" method="post">
-@*
+        @*
         <input class="form-control" type="text" asp-for="Name" value="@Model.Name" aria-label="Disabled input example" disabled readonly>
         <input class="form-control" type="text" asp-for="Latitude" value="@Model.Latitude" aria-label="Disabled input example" disabled readonly>
         <input class="form-control" type="text" asp-for="Longitude" value="@Model.Longitude" aria-label="Disabled input example" disabled readonly>*@
         <body>
             <!-- A div with container id to hold the card -->
             <div id="container">
-                 
+
                 <!-- A div with card class for the card  -->
                 <div class="card">
                     <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1458000/1458031.jpg" style="padding:10px" alt="Lago di Braies">
@@ -140,7 +144,7 @@
                         <div asp-for="Name" class="name">@Model.Name</div>
 
                         <p asp-for="Latitude">
-                           Enlem: @Model.Latitude
+                            Enlem: @Model.Latitude
                         </p>
                         <p asp-for="Longitude">
                             Boylam: @Model.Longitude
@@ -158,22 +162,14 @@
                                 }
                             </select>
                             <input type="text" name="Form_meter" class="form-control" placeholder="0-10000" required />
-                            
+
                         </div>
                         <button type="submit" name="submit">Formasyon Ekle</button>
                     </div>
-                    
-
-
                 </div>
             </div>
-
-
         </body>
-
-       
     </form>
 
-    
-    </div>
+</body>
 </html>

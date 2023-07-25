@@ -212,7 +212,7 @@ namespace TpaoProject1.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "66885b36-87ad-4732-abbd-73b8b76f7939", "admin@admin.com", true, "admin", "admin", false, null, null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEKRy5J72ABoL/Q03cX0bh0SUZTY2tP2yH/I9T89J080XatDeziI+z8tE01NAjW96Ow==", null, false, "4b252383-825a-46d3-93d4-0d6e4ee8d62e", false, "admin@admin.com" });
+                values: new object[] { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "5aea0c7c-1715-4058-a00c-e47f0f3adbdb", "admin@admin.com", true, "admin", "admin", false, null, null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEFWIVq8+80Q4ZHhmAt7mDY92Gjg2TbgNMXhVYRZeTp4HAd4yJMo9AbqeNykwTzVutQ==", null, false, "88e12adc-eb9c-4283-abd0-16662782fcb1", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

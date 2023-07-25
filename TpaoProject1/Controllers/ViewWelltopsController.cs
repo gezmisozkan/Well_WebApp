@@ -206,16 +206,18 @@ namespace TpaoProject1.Controllers
 
 					welltop.City = city;
 				}
+                var user = await _userManager.GetUserAsync(User);
 
-				_dbContext.WellTops.Update(welltop);
+                welltop.UserId = user.Id.ToString();
+
+                _dbContext.WellTops.Update(welltop);
 				_dbContext.SaveChanges();
 			}
 			catch (Exception ex) {
 				BasicNotification("Koordinatlarınızı kontrol ediniz..", NotificationType.Question, "Türk deniz sahasını aştınız!");
 
 			}
-			welltop.UserId = TempData["userid"].ToString();
-            
+
             return RedirectToAction("MainPage", "ViewWelltops");
 
         }

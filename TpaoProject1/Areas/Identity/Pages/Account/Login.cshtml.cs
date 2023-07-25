@@ -121,7 +121,7 @@ namespace TpaoProject1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToAction("MainPage", "ViewWelltops");
+                    return RedirectToAction("Index", "Home");
                     // return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

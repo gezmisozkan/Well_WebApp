@@ -33,7 +33,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
     // Other options you might have
-    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = true;
 })
 .AddDefaultTokenProviders()
 .AddRoles<IdentityRole>()
@@ -64,7 +64,7 @@ builder.Services.Configure<EmailSenderOptions>(options =>
     options.Port = 587;
     options.EnableSsl = true;
     options.UserName = "melisayuncu.my@gmail.com"; // Replace with your Gmail email
-    options.Password = "echt llaq dovv whrk"; // Replace with your Gmail application password
+    options.Password = "lpcc lstm yego kqmx"; // Replace with your Gmail application password
 });
 
 //builder.Services.ConfigureDbContext(builder.Configuration);

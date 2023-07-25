@@ -107,19 +107,21 @@ namespace TpaoProject1.Controllers
             ViewData["name"] = well.Name;
             ViewData["latitude"] = well.Latitude;
             ViewData["longitude"] = well.Longitude;
-            TempData["formation_well_id"] = well.Id;
-            
+            ViewData["formation_well_id"] = well.Id;
+            ViewData["well_type"] = well.WellTopType;
 
             return View(formation);
         }
         [HttpPost]
         public IActionResult UpdateFormation(Formation formation)
         {
-            formation.wellid = Int32.Parse(TempData.Peek("formation_well_id").ToString()); // !!!!!!!!! kullanıcıyı geri yönlendirdiğimizde tempdatadaki veri siliniyor buna çözüm bul !!!!!!!
+            formation.wellid = Int32.Parse(TempData.Peek("formation_well_id").ToString());
             var well = _context.WellTops.Find(formation.wellid);
             ViewData["name"] = well.Name;
             ViewData["latitude"] = well.Latitude;
             ViewData["longitude"] = well.Longitude;
+            ViewData["formation_well_id"] = well.Id;
+            ViewData["well_type"] = well.WellTopType;
 
             var formation_list = _context.Formation.Where(x => x.wellid == formation.wellid).ToList();
             var index = formation_list.FindIndex(x => x.Id == formation.Id);
