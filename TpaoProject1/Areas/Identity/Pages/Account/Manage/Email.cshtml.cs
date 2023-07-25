@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
@@ -129,11 +129,22 @@ namespace TpaoProject1.Areas.Identity.Pages.Account.Manage
 
                 // Instead of using _emailSender.SendEmailAsync(), you can send the email using your preferred method.
                 // For example, using the EmailSenderOptions and SmtpClient as mentioned earlier:
-                var subject = "Confirm your email change";
-                var htmlMessage = $"Please confirm your email change by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.";
-                await _emailSender.SendEmailAsync(Input.NewEmail, subject, htmlMessage);
+                string templatePath = "./Views/EmailTemplate.cshtml";
+                string htmlMessage;
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                using (var reader = new StreamReader(templatePath))
+                {
+                    htmlMessage = await reader.ReadToEndAsync();
+                }
+
+                // Onaylama bağlantısını HTML şablonunda ilgili yere entegre ediyoruz.
+                htmlMessage = htmlMessage.Replace("{{ConfirmationLink}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                // Email'i gönderme işlemini gerçekleştiriyoruz.
+                var subject = "Confirm your email";
+                await _emailSender.SendEmailAsync(email, subject, htmlMessage);
+
+                StatusMessage = "Verification email sent. Please check your email.";
                 return RedirectToPage();
             }
 
