@@ -156,7 +156,7 @@ namespace TpaoProject1.Controllers
 
             //};
             List<WellTop> welltop = new();
-            using (var reader = new StreamReader(@"C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\New folder\TPAO_merged_main\TpaoProject1\Controllers\randomKuyuVerisi.csv"))
+            using (var reader = new StreamReader(@"randomKuyuVerisi.csv"))
             {
                 //    List<string> listA = new List<string>();
                 //    List<string> listB = new List<string>();
