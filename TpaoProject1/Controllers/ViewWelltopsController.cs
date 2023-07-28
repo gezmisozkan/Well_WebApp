@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.IO;
 using System;
 using TpaoProject1.Areas.Identity.Data;
 using TpaoProject1.Data;
 using TpaoProject1.Model;
 using TpaoProject1.Models;
+using X.PagedList;
 
 namespace TpaoProject1.Controllers
 {
@@ -124,10 +126,11 @@ namespace TpaoProject1.Controllers
             return _dbContext.WellTops.Any(u => u.Latitude == latitude) && _dbContext.WellTops.Any(u => u.Longitude == longitude);
         }
 
-        public async Task<IActionResult> MainPage()
+        public async Task<IActionResult> MainPage(int page = 1, int pageSizee = 50)
         {
-
-
+            IPagedList<WellTop> data = null;
+            
+            
             var user = await _userManager.GetUserAsync(User);
             var WellTopList = _dbContext.WellTops.ToList();
 
@@ -145,15 +148,66 @@ namespace TpaoProject1.Controllers
             var users = _dbContext.Users.ToList();
 
 
-            var viewModel = new UserRolesViewModel
+            //var viewModel = new UserRolesViewModel
+            //{
+            //    Kullanicilar = users,
+            //    Kuyular = WellTopList
+
+
+            //};
+            List<WellTop> welltop = new();
+            using (var reader = new StreamReader(@"C:\Users\gezmi\OneDrive\Masaüstü\TPAO_Project\New folder\TPAO_merged_main\TpaoProject1\Controllers\randomKuyuVerisi.csv"))
+            {
+                //    List<string> listA = new List<string>();
+                //    List<string> listB = new List<string>();
+
+                bool flag = false;
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(';');
+
+                    if (flag)
+                    {
+                        var name = values[0];
+                        var lngi = values[1];
+                        var lati = values[2];
+                        string real_type = "";
+                        var type_number = Int32.Parse(values[3]);
+                        if (type_number == 0)
+                            real_type = "arama";
+                        else if (type_number == 1)
+                            real_type = "tespit";
+                        else if (type_number == 2)
+                            real_type = "üretim";
+                        //listA.Add(values[0]);
+                        //listB.Add(values[1]);
+                        WellTop new_well = new()
+                        {
+                            UserId = user.Id,
+                            Latitude = lati,
+                            Longitude = lngi,
+                            Name = name,
+                            WellTopType = real_type
+                        };
+
+                        welltop.Add(new_well);
+                        data = welltop.ToList().ToPagedList(page, pageSizee);
+                    }
+                   
+                    flag = true;
+                }
+            }
+
+            var viewModel = new PageUserModel()
             {
                 Kullanicilar = users,
-                Kuyular = WellTopList
+                Kuyular = data,
+                MapKuyular = welltop,
+                PageSize = pageSizee
 
 
             };
-
-
             return View(viewModel);
         }
 

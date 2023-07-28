@@ -107,7 +107,7 @@ namespace TpaoProject1.Controllers
             ViewData["name"] = well.Name;
             ViewData["latitude"] = well.Latitude;
             ViewData["longitude"] = well.Longitude;
-            ViewData["formation_well_id"] = well.Id;
+            TempData["formation_well_id"] = well.Id;
             ViewData["well_type"] = well.WellTopType;
 
             return View(formation);

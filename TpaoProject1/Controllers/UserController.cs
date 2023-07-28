@@ -8,8 +8,6 @@ namespace TpaoProject1.Controllers
         public IActionResult ResetPassword()
         {
             return View();
-        }
-        
-        
+        }   
     }
 }
