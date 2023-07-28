@@ -11,3 +11,5 @@ TpaoProject1/appsettings.json
 *.vsidx
 *.dll
 /TpaoProject1/obj/Debug/net6.0/ref/TpaoProject1.dll
+/TpaoProject1/bin/Debug/net6.0/TpaoProject1.pdb
+/TpaoProject1/bin/Debug/net6.0/TpaoProject1.dll
