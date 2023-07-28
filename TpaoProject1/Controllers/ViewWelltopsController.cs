@@ -51,7 +51,7 @@ namespace TpaoProject1.Controllers
                 string city = null;
                 double lati = double.Parse(model.Latitude);//enlem- paralel 36-42
                 double longi = double.Parse(model.Longitude);//boylam - meridyen 26-45
-                string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
+                string apiKey = "YOUR_API_KEY";
 
 
 
