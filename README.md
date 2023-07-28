@@ -2,7 +2,7 @@
 
 # Proje Başlığı
 
-Owner:
+Owners:
 
 Betül Karaman
 
