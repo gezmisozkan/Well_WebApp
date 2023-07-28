@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System.IO;
@@ -51,7 +51,7 @@ namespace TpaoProject1.Controllers
                 string city = null;
                 double lati = double.Parse(model.Latitude);//enlem- paralel 36-42
                 double longi = double.Parse(model.Longitude);//boylam - meridyen 26-45
-                string apiKey = "YOUR_API_KEY";
+                string apiKey = "AIzaSyDU_pWP66-BTzvW7AnEcQRSaBPutMzWxU4";
 
 
 
@@ -132,82 +132,88 @@ namespace TpaoProject1.Controllers
             
             
             var user = await _userManager.GetUserAsync(User);
-            var WellTopList = _dbContext.WellTops.ToList();
+            var WellTopList = _dbContext.WellTops.ToList().ToPagedList();
+            var well = _dbContext.WellTops.ToList();
 
 
             if (User.IsInRole("Admin"))
             {
-                WellTopList = _dbContext.WellTops.ToList();
+                WellTopList = _dbContext.WellTops.ToList().ToPagedList();
+                well = _dbContext.WellTops.ToList();
             }
             else
             {
-                WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
+                WellTopList = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList().ToPagedList();
+                well = _dbContext.WellTops.Where(w => w.UserId == user.Id).ToList();
             }
 
 
             var users = _dbContext.Users.ToList();
 
+            // if you want to use database you can use this code
+            var viewModel = new PageUserModel
+            {
+                Kullanicilar = users,
+                Kuyular = WellTopList,
+                MapKuyular = well,
+                PageSize = pageSizee
+            };
 
-            //var viewModel = new UserRolesViewModel
+            // if you want to read wells from excel file you can uncomment this code
+
+            //List<WellTop> welltop = new();
+            //using (var reader = new StreamReader(@"Controllers/randomKuyuVerisi.csv"))
+            //{
+            //    //    List<string> listA = new List<string>();
+            //    //    List<string> listB = new List<string>();
+
+            //    bool flag = false;
+            //    while (!reader.EndOfStream)
+            //    {
+            //        var line = reader.ReadLine();
+            //        var values = line.Split(';');
+
+            //        if (flag)
+            //        {
+            //            var name = values[0];
+            //            var lngi = values[1];
+            //            var lati = values[2];
+            //            string real_type = "";
+            //            var type_number = Int32.Parse(values[3]);
+            //            if (type_number == 0)
+            //                real_type = "arama";
+            //            else if (type_number == 1)
+            //                real_type = "tespit";
+            //            else if (type_number == 2)
+            //                real_type = "üretim";
+            //            //listA.Add(values[0]);
+            //            //listB.Add(values[1]);
+            //            WellTop new_well = new()
+            //            {
+            //                UserId = user.Id,
+            //                Latitude = lati,
+            //                Longitude = lngi,
+            //                Name = name,
+            //                WellTopType = real_type
+            //            };
+
+            //            welltop.Add(new_well);
+            //            data = welltop.ToList().ToPagedList(page, pageSizee);
+            //        }
+
+            //        flag = true;
+            //    }
+            //}
+
+            //var viewModel = new PageUserModel()
             //{
             //    Kullanicilar = users,
-            //    Kuyular = WellTopList
+            //    Kuyular = data,
+            //    MapKuyular = welltop,
+            //    PageSize = pageSizee
 
 
             //};
-            List<WellTop> welltop = new();
-            using (var reader = new StreamReader(@"Controller/randomKuyuVerisi.csv"))
-            {
-                //    List<string> listA = new List<string>();
-                //    List<string> listB = new List<string>();
-
-                bool flag = false;
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-
-                    if (flag)
-                    {
-                        var name = values[0];
-                        var lngi = values[1];
-                        var lati = values[2];
-                        string real_type = "";
-                        var type_number = Int32.Parse(values[3]);
-                        if (type_number == 0)
-                            real_type = "arama";
-                        else if (type_number == 1)
-                            real_type = "tespit";
-                        else if (type_number == 2)
-                            real_type = "üretim";
-                        //listA.Add(values[0]);
-                        //listB.Add(values[1]);
-                        WellTop new_well = new()
-                        {
-                            UserId = user.Id,
-                            Latitude = lati,
-                            Longitude = lngi,
-                            Name = name,
-                            WellTopType = real_type
-                        };
-
-                        welltop.Add(new_well);
-                        data = welltop.ToList().ToPagedList(page, pageSizee);
-                    }
-                   
-                    flag = true;
-                }
-            }
-
-            var viewModel = new PageUserModel()
-            {
-                Kullanicilar = users,
-                Kuyular = data,
-                MapKuyular = welltop,
-                PageSize = pageSizee
-
-
-            };
             return View(viewModel);
         }
 
