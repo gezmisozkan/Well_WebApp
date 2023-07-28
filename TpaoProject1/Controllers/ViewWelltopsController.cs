@@ -156,7 +156,7 @@ namespace TpaoProject1.Controllers
 
             //};
             List<WellTop> welltop = new();
-            using (var reader = new StreamReader(@"randomKuyuVerisi.csv"))
+            using (var reader = new StreamReader(@"Controller/randomKuyuVerisi.csv"))
             {
                 //    List<string> listA = new List<string>();
                 //    List<string> listB = new List<string>();
